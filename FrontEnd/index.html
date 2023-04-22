@@ -8,13 +8,17 @@
             background-color: #fff;
             margin: 0;
             padding: 0;
-            display: grid;
         }
         .sidebar {
             background-color: #f2f2f2;
-            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
             padding: 10px;
             width: 150px;
+            
+        }
+        .mainbody{
+            display: grid;
+            grid-template-columns: 200px 1fr;
         }
         .sidebar a,div {
             display: grid;
@@ -33,15 +37,14 @@
             color: #0069d9;
         }
         .compose {
-            display: grid;
-            justify-content: center;
+            text-align: center;
             align-items: center;
-            width: 100px;
+            width: 90px;
             height: 40px;
             background-color: #007bff;
             color: #fff;
-            font-weight: bold;
-            border-radius: 5%;
+            font-weight: bolder;
+            border-radius: 10%;
             box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
             cursor: pointer;
         }
@@ -56,9 +59,31 @@
             color: white;
             font-size: 15px;
             height: 150px;
+        }   
+        .kratoo {
+            max-width: 100%;
+            margin: 0px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         }
-        .header p{
-            padding: 0px;
+        .kratoo h1 {
+            margin-top: 0;
+            font-size: 28px;
+            font-weight: normal;
+        }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
         }
     </style>
 </head>
@@ -67,13 +92,22 @@
         <h1>กระทู้ MCV</h1>
         <p>better MCV</p>
     </div>
-    <nav class="sidebar">
-        <div class="compose">สร้างกระทู้</div>
-        <div><a href="#">กระทู้ทั้งหมด</a></div>
-        <div><a href="#">ส่งแล้ว</a></div>
-        <div><a href="#">ร่างกระทู้</a></div>
-        <div><a href="#">ถังขยะ</a></div>
-        <div><a href="#">เพิ่มเติม</a></div> 
-    </nav> 
+    <div class="mainbody">
+        <div class="sidebar">
+            <div class="compose">สร้างกระทู้</div>
+            <div><a href="#">กระทู้ทั้งหมด</a></div>
+            <div><a href="#">ส่งแล้ว</a></div>
+            <div><a href="#">ร่างกระทู้</a></div>
+            <div><a href="#">ถังขยะ</a></div>
+            <div><a href="#">เพิ่มเติม</a></div> 
+        </div> 
+        <div class="kratoo">
+            <ul>
+                <li>kratoo1</li>
+                <li>kratoo2</li>
+                <li>kratoo3</li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
