@@ -1,4 +1,5 @@
 const dotenv = require("dotenv");
+const dateTime = require("./dateTime");
 dotenv.config();
 const { v4: uuidv4 } = require("uuid");
 const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
@@ -25,7 +26,7 @@ exports.getPost = async (req, res) => {
 
 exports.addPost = async (req, res) => {
   const post_id = uuidv4();
-  const post_date = getTime();
+  const post_date = dateTime.getTime();
   console.log(post_date);
   const post_like = 0;
   const post_dislike = 0;

@@ -8,10 +8,10 @@ router.get("/", postController.getPost);
 router.delete("/:post_id", postController.deletePost);
 router.post("/", postController.addPost);
 
-router.get("/:post_id/comments", commentController.getComment);
-router.post("/:post_id/comments", commentController.deleteComment);
+router.get("/comments/:post_id", commentController.getComment);
+router.post("/comments/:post_id", commentController.addComment);
 router.delete(
-  "/:post_id/comments/:comment_id",
+  "/comments/:post_id/:comment_id",
   commentController.deleteComment
 );
 
