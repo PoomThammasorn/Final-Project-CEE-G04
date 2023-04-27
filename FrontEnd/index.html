@@ -16,14 +16,15 @@
     </div>
     <div class="container">
       <div class="sidebar">
-        <div class="compose">สร้างกระทู้</div>
+        <div class="compose" onclick="toAddKratooPage()">สร้างกระทู้</div>
         <div><a href="#" onclick="toMainmenu()">กระทู้ทั้งหมด</a></div>
         <div><a href="#">ส่งแล้ว</a></div>
         <div><a href="#">ร่างกระทู้</a></div>
         <div><a href="#">ถังขยะ</a></div>
         <div><a href="#">เพิ่มเติม</a></div>
       </div>
-        <ul id="kratoo">
+      <div id="kratoo">
+        <ul>
           <a href="#" onclick="toTopic(0)">
             <li class="topic">
               <h2>topic1 : problem1</h2>
@@ -73,6 +74,7 @@
             </li>
           </a>
         </ul>
+      </div> 
     </div>
     <script src="indexjs.js"></script>
   </body>
