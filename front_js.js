@@ -40,7 +40,8 @@ function addKratoo(){
     let content = document.getElementById("content").value;
     topics.unshift(topic);
     contents.unshift(content);
-    myKratoo.unshift()
-    let main=document.getElementById("kratoo");
-    main.innerHTML = updateMain();
+    myKratoo.unshift();
+    main = updateMain();
+    let doc=document.getElementById("kratoo");
+    doc.innerHTML = main;
  }
