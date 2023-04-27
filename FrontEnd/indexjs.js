@@ -1,5 +1,5 @@
 let main=document.getElementById("kratoo").innerHTML;
-let topics=[
+let topics=["0",
     '<h2>topic1 : problem1</h2><div>how to ... problem1?</div>',
     '<h2>topic2 : problem2</h2><div>how to ... problem2?</div>',
     '<h2>topic3 : problem3</h2><div>how to ... problem3?</div>',
@@ -25,10 +25,12 @@ function toAddKratooPage(){
 function addKratoo(){
     let topic = document.getElementById("topic").value;
     let content = document.getElementById("content").value; 
-    topics.push('<h2>'+topic+' : problem'+(topics.length+1)+'</h2><div>'+content+'</div>');
-    console.log(main);
-    main=main.slice(0,main.length-12)+'<a href="#" onclick="toTopic(8)"><li class="topic"><h2>topic9 : problem9</h2><div>how to ... problem9?</div</li></a>'+'</ul>';
-    console.log(main);
+    console.log(main.slice(0,main.search("</ul>")));
+    main=main.slice(0,main.search("</ul>"))+'<a href="#" onclick="toTopic('+(topics.length)+')"><li class="topic"><h2>topic'+(topics.length)+' : problem'+(topics.length)+'</h2><div>how to ... problem'+(topics.length)+'?</div></li></a>'+'</ul>';
+    topics.push('<h2>'+topic+' : problem'+(topics.length)+'</h2><div>'+content+'</div>');
+    console.log(main.slice(0,main.search("</ul>")));
+    // console.log(topics);
+    // console.log(main);
     content=document.getElementById("kratoo");
     content.innerHTML=main;
  }
