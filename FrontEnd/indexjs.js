@@ -1,6 +1,6 @@
 let main=document.getElementById("kratoo").innerHTML;
 let topics=["0",
-    '<h2>topic1 : problem1</h2><div>how to ... problem1?</div>',
+    '<h2>topic1 : problem1</h2><div>how to ... problem1?</div>',        //ปกติเค้าทำไงกันครับเนี่ยยยยยยยยยย
     '<h2>topic2 : problem2</h2><div>how to ... problem2?</div>',
     '<h2>topic3 : problem3</h2><div>how to ... problem3?</div>',
     '<h2>topic4 : problem4</h2><div>how to ... problem4?</div>',
