@@ -40,8 +40,20 @@ function addKratoo(){
     let content = document.getElementById("content").value;
     topics.unshift(topic);
     contents.unshift(content);
-    myKratoo.unshift();
+    myKratoo.unshift(topic);
     main = updateMain();
     let doc=document.getElementById("kratoo");
     doc.innerHTML = main;
- }
+}
+function toMyKratoo() {
+    let myList="<ul>";
+    for (m of myKratoo) {
+        i=topics.indexOf(m);
+        myList += '<a href="#" onclick="toTopic('+i+')">';
+        myList += '<li class="topic">';
+        myList += '<h2>'+topics[i]+'</h2>';
+        myList += '</li></a>';
+    }
+    myList += "</ul>";
+    document.getElementById("kratoo").innerHTML = myList;
+}
