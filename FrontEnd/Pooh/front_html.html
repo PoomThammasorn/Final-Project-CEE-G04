@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Pantip MCV</title>
+    <link href="front_css.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <div class="header">
+      <a href="#">
+        <h1>กระทู้ MCV</h1>
+      </a>
+      <p>Better MCV</p>
+    </div>
+    <div class="container">
+      <div class="sidebar">
+        <div class="compose" onclick="toAddKratooPage()">สร้างกระทู้</div>
+        <div><a href="#" onclick="toMainmenu()">กระทู้ทั้งหมด</a></div>
+        <div><a href="#">ส่งแล้ว</a></div>
+        <div><a href="#">ร่างกระทู้</a></div>
+        <div><a href="#">ถังขยะ</a></div>
+        <!-- <div><a href="#">เพิ่มเติม</a></div> -->
+      </div>
+      <div id="kratoo">
+        <ul>
+          <a href="#" onclick="toTopic(0)">
+            <li class="topic">
+              <h2>Tips for web design?</h2>
+            </li>
+          </a>
+          <a href="#" onclick="toTopic(1)">
+            <li class="topic" >
+              <h2>Help my ComProg homework please</h2>
+            </li>
+          </a>
+          <a href="#" onclick="toTopic(2)">
+            <li class="topic" >
+              <h2>i don't understand backend development. someone helpppppp</h2>
+            </li>
+          </a>
+          <a href="#"  onclick="toTopic(3)">
+            <li class="topic">
+              <h2>Should I drop ComEngEss???</h2>
+            </li>
+          </a>
+        </ul>
+      </div> 
+    </div>
+    <script src="front_js.js"></script>
+  </body>
+</html>
