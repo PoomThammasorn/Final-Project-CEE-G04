@@ -23,7 +23,6 @@ function updateMain() {
         i += 1;
     }
     main += "</ul>";
-    return main;
 }
 function toTopic(n) {
     var content = document.getElementById("kratoo");
@@ -81,8 +80,8 @@ const addKratoo = async () => {
     myKratoo.unshift(topic);
     main = updateMain();
     let doc=document.getElementById("kratoo");
-    doc.innerHTML = main*/
-};
+    doc.innerHTML = main;*/
+}
 function toMyKratoo() {
     let myList = "<ul>";
     for (m of myKratoo) {
