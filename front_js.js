@@ -11,7 +11,7 @@ let myKratoo = [];
 let addkratoo='<span>Topic :</span><input type="text" id="topic"><br><span>Question :</span>\
 <textarea id="content" rows="4" cols="50"></textarea><br><button type="submit" onclick="addKratoo()">Submit</button></div>'
 function updateMain(){
-    let main="<ul>";
+    main="<ul>";
     let i=0;
     for (t of topics) {
         main += '<a href="#" onclick="toTopic('+i+')">';
@@ -21,7 +21,6 @@ function updateMain(){
         i += 1;
     }
     main += "</ul>";
-    return main;
 }
 function toTopic(n){
     var content=document.getElementById("kratoo");
@@ -41,9 +40,8 @@ function addKratoo(){
     topics.unshift(topic);
     contents.unshift(content);
     myKratoo.unshift(topic);
-    main = updateMain();
-    let doc=document.getElementById("kratoo");
-    doc.innerHTML = main;
+    updateMain();
+    document.getElementById("kratoo").innerHTML=main; 
 }
 function toMyKratoo() {
     let myList="<ul>";
