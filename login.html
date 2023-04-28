@@ -1,37 +1,42 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="UTF-8">
-    <title>MyCourseville API Login Page</title>
-    <link rel="stylesheet" href="style.css">
-    </link>
-</head>
-
-<body>
-    <section>
-        <header>
-            <h1 id="app-name">MyCourseville API Login Page Group <span id="group-id"></span></h1>
-        </header>
-    </section>
-    <section>
-        <header>
-            <h2 class="section-title description">Please press the login button to proceed to MyCourseville API Home
-                Page</h2>
-            <p class="section-subtitle description">(You need to login with MyCourseville Platform account.)</p>
-        </header>
-    </section>
-    <section class="section-center">
-        <button class="button login-button" onclick="authorizeApplication()">Login</button>
-    </section>
-    <section class="section-center">
-        <button class="button change-page-button" onclick="window.location.href='front_html.html'">Go to
-            รายการฝากซื้อ</button>
-    </section>
-    <section class="section-credit">
-        &#169; 2110221 Computer Engineering Essentials (2022/2) &#169;
-    </section>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MyCourseville Login</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap"
+      rel="stylesheet"
+    />
     <script src="login.js"></script>
-</body>
+    <link href="login.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="background">
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+    <div class="box">
+      <img
+        class="mcv_img"
+        src="./img/mcv.png"
+        alt="MyCourseville image"
+      />
+      <p class="login_text">API Login</p>
 
+      <p class="text2">
+        (You need to login with MyCourseville Platform account.)
+      </p>
+      <div class="div2">
+        <button class="button_login" onclick="authorizeApplication()">login</button>
+      </div class="div1">
+      <div>
+        <button class="button_nextpage" onclick="window.location.href='front_html.html'">MyCourseBoard</button>
+      </div>
+      <p class="text4">Made by Group 4</p>
+      <p class="text3">
+        2110221 Computer Engineering Essentials (2022/2) &#169;
+      </p>
+    </div>
+    <script src="login.js"></script>
+  </body>
 </html>
