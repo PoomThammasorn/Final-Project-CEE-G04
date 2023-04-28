@@ -36,6 +36,10 @@ function toAddKratooPage() {
     var content = document.getElementById("kratoo");
     content.innerHTML = addkratoo;
 }
+const showKratooInTable = (itemsData) => {
+    /* เป็น methond เอาไว้ให้แสดงข้อมูลจาก backend คับ อันนี้รบกวนน้องๆเขียน 
+    เข้าใจว่าถ้า ใช้อันนี้ตอน refresh กับตอน submit แล้วกลับมาหน้าแรก ข้อมูลจะไม่หาย*/
+};
 const getKratooFromDB = async () => {
     const options = {
         method: "GET",
@@ -73,14 +77,14 @@ const addKratoo = async () => {
     await fetch(`http://${backendIPAddress}/post`, options)
         .then((response) => response.json())
         .catch((error) => console.error(error));
-    await getKratooFromDB();
-    showItemsFromBD(itemsData);
-    /*topics.unshift(topic);
+    /*await getKratooFromDB();  
+    showItemsFromBD(itemsData);*/  /* เอาไว้อัพเดตหน้า mian */
+    topics.unshift(topic);
     contents.unshift(content);
     myKratoo.unshift(topic);
-    main = updateMain();
-    let doc=document.getElementById("kratoo");
-    doc.innerHTML = main;*/
+    /*main = updateMain();*/
+    let doc = document.getElementById("kratoo");
+    doc.innerHTML = main;
 }
 function toMyKratoo() {
     let myList = "<ul>";
@@ -94,3 +98,14 @@ function toMyKratoo() {
     myList += "</ul>";
     document.getElementById("kratoo").innerHTML = myList;
 }
+const deleteKratoo = async (post_id) => {
+    const options = {
+        method: "DELET",
+        credentials: "include",
+    }
+    await fetch(`http://${backendIPAddress}/post/${post_id}`, options)
+        .then((response) => response.json())
+        .catch((error) => console.error(error));
+    /*await getKratooFromDB();
+   showItemsFromBD(itemsData);*/ /* เอาไว้อัพเดตหน้า mian */
+};
