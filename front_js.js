@@ -9,7 +9,7 @@ let contents=["I wanna try to create a website. Anybody got some tips for making
 "I don't think I've been doing well in comengess, was thinking about dropping wdyt?"];
 let myKratoo = [];
 let addkratoo='<span>Topic :</span><input type="text" id="topic"><br><span>Question :</span>\
-<textarea id="content" rows="4" cols="50"></textarea><br><button type="submit" onclick="addKratoo()">Submit</button></div>'
+<textarea id="content" rows="4" cols="50"></textarea><br><button id="submit" onclick="addKratoo()">Submit</button></div>'
 function updateMain(){
     main="<ul>";
     let i=0;
@@ -50,8 +50,10 @@ function toMyKratoo() {
         myList += '<a href="#" onclick="toTopic('+i+')">';
         myList += '<li class="topic">';
         myList += '<h2>'+topics[i]+'</h2>';
+        myList += '<button id="delete" onclick="deleteKratoo()">Delete</button>'
         myList += '</li></a>';
     }
     myList += "</ul>";
     document.getElementById("kratoo").innerHTML = myList;
 }
+// function deleteKratoo()

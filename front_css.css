@@ -113,9 +113,18 @@ body {
     color: black;
     margin-right: 0px;
   }
-button {
+#submit {
   background-color: #007bff;
   font-size: 16px;
+  color: #fff;
   border: none;
   padding: 16px 16px;
+}
+#delete {
+  background-color: #fe0707;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  padding: 16px 16px;
+  border-radius: 10px 10px 10px 10px;
 }
