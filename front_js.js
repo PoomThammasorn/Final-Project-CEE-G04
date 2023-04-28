@@ -109,3 +109,55 @@ const deleteKratoo = async (post_id) => {
     /*await getKratooFromDB();
    showItemsFromBD(itemsData);*/ /* เอาไว้อัพเดตหน้า mian */
 };
+/* ---------------------------------------------------- comment part -------------------------------------------------- */
+
+const getCommentFromDB = async (post_id) => {
+    const options = {
+        method: "GET",
+        credentials: "include",
+    };
+    await fetch(`http://${backendIPAddress}/post/comments/${post_id}`, options)
+        .then((response) => response.json())
+        .then((data) => {
+            itemsData = data
+        })
+        .catch((error) => console.error(error));
+};
+const addComment = async (post_id) => {
+    /*const content = document.getElementById("content").value;*/
+    /* รบกวนแก้ centent ให้เป็น PARAMETER ที่รับ เนื้อหา comment เข้ามาให้หน่อยครับ*/
+    const author_id = 'from mcv';
+    const author = 'from mcv';
+    const itemToAdd = {
+        "comment_author": "feom mcv",
+        "comment_author_id": "from mcv",
+        "comment_content": content,
+        "comment_dislike": 0,
+        "comment_like": 0
+    }
+    const options = {
+        method: "POST",
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(itemToAdd)
+    }
+    await fetch(`http://${backendIPAddress}/post/comments/${post_id}`, options)
+        .then((response) => response.json())
+        .catch((error) => console.error(error));
+    /*await getCommentFromDB(post_id);  
+    showItemsFromBD(itemsData);*/  /* เอาไว้อัพเดตหน้า comemnt */
+}
+const deleteCoemment = async (comment_id) => {
+    const options = {
+        method: "DELET",
+        credentials: "include",
+    }
+    await fetch(`http://${backendIPAddress}/post/comments/${post_id}/${comment_id}`, options)
+        .then((response) => response.json())
+        .catch((error) => console.error(error));
+    /*await getCommentFromDB(post_id);  
+    showItemsFromBD(itemsData);*/  /* เอาไว้อัพเดตหน้า comemnt */
+};
+
