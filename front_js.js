@@ -161,4 +161,30 @@ const deleteCoemment = async (comment_id) => {
     /*await getCommentFromDB(post_id);  
     showItemsFromBD(itemsData);*/  /* เอาไว้อัพเดตหน้า comemnt */
 };
+/* ---------------------------------------------------- mcv -------------------------------------------------- */
+const authorizeApplication = () => {
+    window.location.href = `http://${backendIPAddress}/courseville/auth_app`;
+};
+
+const getUserProfile = async () => {
+    const options = {
+        method: "GET",
+        credentials: "include",
+    };
+    await fetch(
+        `http://${backendIPAddress}/courseville/get_profile_info`,
+        options
+    )
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data.user);
+            document.getElementById(
+                "eng-name-info"
+            ).innerHTML = `${data.user.title_en} ${data.user.firstname_en} ${data.user.lastname_en}`;
+            document.getElementById(
+                "thai-name-info"
+            ).innerHTML = `${data.user.title_th} ${data.user.firstname_th} ${data.user.lastname_th}`;
+        })
+        .catch((error) => console.error(error));
+};
 
