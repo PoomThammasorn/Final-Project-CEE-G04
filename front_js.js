@@ -185,6 +185,18 @@ const getUserProfile = async () => {
     .then((response) => response.json())
     .then((data) => {
       PersonalData = data.data;
+      putUserProfile(PersonalData);
     })
     .catch((error) => console.error(error));
 };
+
+function putUserProfile(data) {
+  console.log("update profile");
+  document.getElementById(
+    "eng-first-name"
+  ).innerHTML = `${data.student.firstname_en}`;
+  document.getElementById(
+    "eng-last-name"
+  ).innerHTML = `${data.student.lastname_en}`;
+  document.getElementById("student-id").innerHTML = `${data.student.id}`;
+}
