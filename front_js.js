@@ -65,8 +65,8 @@ const getKratooFromDB = async () => {
 const addKratoo = async () => {
   const topic = document.getElementById("topic").value;
   const content = document.getElementById("content").value;
-  const author_id = document.getElementById("student-id");
-  const author = document.getElementById("eng-name-info");
+  const author_id = PersonalData.studnet.id;
+  const author = PersonalData.student.firstname_en;
   const itemToAdd = {
     post_content: content,
     post_author: author,
@@ -183,16 +183,8 @@ const getUserProfile = async () => {
     options
   )
     .then((response) => response.json())
-    .then((data) => data.data)
     .then((data) => {
-      console.log(data);
-      document.getElementById(
-        "eng-name-info"
-      ).innerHTML = `${data.student.title_en} ${data.student.firstname_en} ${data.student.lastname_en}`;
-      document.getElementById(
-        "thai-name-info"
-      ).innerHTML = `${data.student.title_th} ${data.student.firstname_th} ${data.student.lastname_th}`;
-      document.getElementById("student-id").innerHTML = `${data.student.id}`;
+      PersonalData = data.data;
     })
     .catch((error) => console.error(error));
 };
