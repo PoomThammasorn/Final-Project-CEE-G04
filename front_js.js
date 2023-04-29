@@ -128,7 +128,7 @@ const getCommentFromDB = async (post_id) => {
   await fetch(`http://${backendIPAddress}/post/comments/${post_id}`, options)
     .then((response) => response.json())
     .then((data) => {
-      itemsData = data;
+      itemsData = data.sort(customSort);
     })
     .catch((error) => console.error(error));
 };
@@ -200,3 +200,7 @@ function putUserProfile(data) {
   ).innerHTML = `${data.student.lastname_en}`;
   document.getElementById("student-id").innerHTML = `${data.student.id}`;
 }
+
+const customSort = (a, b) => {
+  return a.post_date - b.post_date;
+};
