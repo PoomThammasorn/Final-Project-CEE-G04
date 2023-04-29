@@ -1,5 +1,5 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Mitr", sans-serif;
   background-color: #fff;
   margin: 0;
   padding: 0;
@@ -9,7 +9,7 @@ body {
 
 h1 {
   font-family: "Mitr", sans-serif;
-  font-size: large;
+  font-size: 45px;
   font-weight: bold;
   color: #fff;
 }
@@ -61,7 +61,7 @@ div {
   align-items: center;
   width: 90px;
   height: 40px;
-  background-color: #007bff;
+  background-color: #ffa200;
   color: #fff;
   font-weight: bolder;
   border-radius: 10%;
@@ -70,17 +70,34 @@ div {
 }
 
 .compose:hover {
-  background-color: #0069d9;
+  background-color: #bd7800;
   text-decoration: underline;
 }
 
 .header {
-  padding-left: 10px;
+  padding-left: 18px;
   text-align: left;
-  background: #007bff;
-  color: white;
+  background: #018ada;
   font-size: 15px;
   height: 150px;
+  width: 100%;
+}
+
+.img {
+  width: 170px;
+  position: absolute;
+  top: 5.6em;
+  left: 5.8em;
+}
+
+#better {
+  font-family: "Mitr", sans-serif;
+  color: #ffa200;
+  font-size: 20px;
+  font-weight: bold;
+  position: absolute;
+  top: 4em;
+  left: 1em;
 }
 
 #kratoo {
@@ -137,12 +154,45 @@ ul > a :hover {
   margin-right: 0px;
 }
 
+#topic {
+  width: auto;
+  height: 35px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  font-family: "Mitr", sans-serif;
+}
+
+#content {
+  font-size: 16px;
+  font-weight: normal;
+  color: #000;
+  font-family: "Mitr", sans-serif;
+  height: 250px;
+}
+
 #submit {
-  background-color: #007bff;
+  background-color: #022447;
+  position: center;
+  cursor: pointer;
   font-size: 16px;
   color: #fff;
   border: none;
   padding: 16px 16px;
+  border-radius: 2%;
+  width: 60%;
+  position: relative;
+  left: 20%;
+  text-align: center;
+  align-items: center;
+  font-family: "Mitr", sans-serif;
+  font-size: 18px;
+}
+
+#submit:hover {
+  background-color: #01468a;
+  text-decoration: underline;
+  text-shadow: #000 0px 0px 5px;
 }
 
 #delete {

@@ -1,13 +1,12 @@
 const backendIPAddress = "52.20.54.127:3000";
-
 let itemsData;
 let PersonalData;
 let topics = [];
 let contents = [];
 let main = document.getElementById("kratoo").innerHTML;
 let addkratoo =
-  '<span>Topic :</span><input type="text" id="topic"><br><span>Question :</span>\
-<textarea id="content" rows="4" cols="50"></textarea><br><button id="submit" onclick="addKratoo()">Submit</button></div>';
+  ' <input type="text" placeholder="Topic" id="topic" name="name" id="topic" maxlength="60"/><br>\
+<textarea id="content" placeholder="Content" rows="4" cols="50"></textarea><br><button id="submit" onclick="addKratoo()">Submit</button></div>';
 function updateMain() {
   let main = "<ul>";
   let i = 0;
@@ -42,6 +41,7 @@ const showKratooInTable = (itemsData) => {
     เข้าใจว่าถ้า ใช้อันนี้ตอน refresh กับตอน submit แล้วกลับมาหน้าแรก ข้อมูลจะไม่หาย*/
   topics = [];
   contents = [];
+  // getKratooFromDB();
   for (data of itemsData) {
     topics.push(data.post_title);
     contents.push(data.post_content);
