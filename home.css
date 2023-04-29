@@ -55,14 +55,15 @@ body {
   font-family: "Mitr", sans-serif;
   font-weight: bold;
 }
-.eng-name-info {
+
+#eng-name-info {
   color: #000000;
   padding: 10px 0 20px 0;
   font-size: 13px;
   font-family: "Mitr", sans-serif;
   font-weight: bold;
 }
-.thai-name-info {
+#thai-name-info {
   color: #000000;
   padding: 10px 0 20px 0;
   font-size: 13px;
