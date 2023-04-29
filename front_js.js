@@ -25,6 +25,10 @@ function toTopic(n) {
   var content = document.getElementById("kratoo");
   content.innerHTML =
     "<h2>" + topics[n] + "</h2><div>" + contents[n] + "</div>";
+    content.innerHTML +=
+    '<span>answer this question : <br><br></span><input type="text" id="topic"><br>'+
+    '<button id="submit" >Submit</button>'; //ยังไม่มี onclick ***************************************************************
+
 }
 function toMainmenu() {
   var content = document.getElementById("kratoo");
@@ -86,12 +90,6 @@ const addKratoo = async () => {
   await fetch(`http://${backendIPAddress}/post`, options)
     .then((response) => response.json())
     .catch((error) => console.error(error));
-  /*await getKratooFromDB();  
-    showItemsFromBD(itemsData);*/ /* เอาไว้อัพเดตหน้า mian */
-  topics.unshift(topic);
-  contents.unshift(content);
-  myKratoo.unshift(topic);
-  /*main = updateMain();*/
   let doc = document.getElementById("kratoo");
   doc.innerHTML = main;
 };
@@ -139,7 +137,7 @@ const addComment = async (post_id) => {
   const author_id = "from mcv";
   const author = "from mcv";
   const itemToAdd = {
-    comment_author: "feom mcv",
+    comment_author: "from mcv",
     comment_author_id: "from mcv",
     comment_content: content,
     comment_dislike: 0,
