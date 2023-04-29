@@ -10,7 +10,7 @@ const getUserProfile = async () => {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data.student);
+      console.log(data);
       document.getElementById(
         "eng-name-info"
       ).innerHTML = `${data.student.title_en} ${data.student.firstname_en} ${data.student.lastname_en}`;
