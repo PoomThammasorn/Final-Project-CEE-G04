@@ -19,16 +19,15 @@ function updateMain() {
     i += 1;
   }
   main += "</ul>";
-  return main
+  return main;
 }
 function toTopic(n) {
   var content = document.getElementById("kratoo");
   content.innerHTML =
     "<h2>" + topics[n] + "</h2><div>" + contents[n] + "</div>";
-    content.innerHTML +=
-    '<span>answer this question : <br><br></span><input type="text" id="content"><br>'+
-    '<button id="submit" onclick="addComment()">Submit</button>'; 
-
+  content.innerHTML +=
+    '<span>answer this question : <br><br></span><input type="text" id="content"><br>' +
+    '<button id="submit" onclick="addComment()">Submit</button>';
 }
 function toMainmenu() {
   var content = document.getElementById("kratoo");
@@ -41,14 +40,14 @@ function toAddKratooPage() {
 const showKratooInTable = (itemsData) => {
   /* เป็น methond เอาไว้ให้แสดงข้อมูลจาก backend คับ อันนี้รบกวนน้องๆเขียน 
     เข้าใจว่าถ้า ใช้อันนี้ตอน refresh กับตอน submit แล้วกลับมาหน้าแรก ข้อมูลจะไม่หาย*/
-    topics=[];
-    contents=[];
-    for (data of itemsData){
-      topics.push(data.post_title);
-      contents.push(data.post_content);
-    }
-    main=updateMain();
-    toMainmenu();
+  topics = [];
+  contents = [];
+  for (data of itemsData) {
+    topics.push(data.post_title);
+    contents.push(data.post_content);
+  }
+  main = updateMain();
+  toMainmenu();
 };
 const getKratooFromDB = async () => {
   const options = {
@@ -61,7 +60,7 @@ const getKratooFromDB = async () => {
       itemsData = data;
     })
     .catch((error) => console.error(error));
-    showKratooInTable(itemsData);
+  showKratooInTable(itemsData);
 };
 const addKratoo = async () => {
   const topic = document.getElementById("topic").value;
@@ -128,6 +127,7 @@ const getCommentFromDB = async (post_id) => {
     })
     .catch((error) => console.error(error));
 };
+
 const addComment = async (post_id) => {
   const content = document.getElementById("content").value;
   const author_id = "from mcv";
@@ -153,7 +153,7 @@ const addComment = async (post_id) => {
   /*await getCommentFromDB(post_id);  
     showItemsFromBD(itemsData);*/
 };
-const deleteCoemment = async (comment_id) => {
+const deleteCoemment = async (comment_id, post_id) => {
   const options = {
     method: "DELET",
     credentials: "include",

@@ -1,18 +1,52 @@
-
-
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>MyCourseville API Home Page</title>
-        <script src="home.js" defer></script>
-    </head>
-    <body onload=getUserProfile();>
+  <head>
+    <meta charset="UTF-8" />
+    <title>MyCourseville API Home Page</title>
+    <link href="home.css" rel="stylesheet" type="text/css" />
+    <script src="home.js" defer></script>
+  </head>
+  <!-- <body onload=getUserProfile();>
        
             <section>
                 <h2 class="section-title">1. Profile Section</h2>
                 <p class="info"> Name-Surname (English) : <span id="eng-name-info"></span></br>
                     Name-Surname (Thai) : <span id="thai-name-info"></span></p>
             </section>
-    </body>
+    </body> -->
+  <body onload="getUserProfile();">
+    <div class="background">
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+    <div class="box">
+      <img class="mcv_img" src="./img/mcv.png" alt="MyCourseville image" />
+      <p class="profile_text">Profile</p>
+
+      <!-- <p class="text2">
+            (You need to login with MyCourseville Platform account.)
+          </p> -->
+      <div class="info">
+        <p class="text_info">
+          Name-Surname (English) : <span id="eng-name-info"></span>
+        </p>
+        <p class="text_info">
+          Name-Surname (Thai) : <span id="thai-name-info"></span>
+        </p>
+      </div>
+      <div class="div2">
+        <button
+          class="button_nextpage"
+          onclick="window.location.href='front_html.html'"
+        >
+          MyCourseBoard
+        </button>
+      </div>
+      <p class="text4">Made by Group 4</p>
+      <p class="text3">
+        2110221 Computer Engineering Essentials (2022/2) &#169;
+      </p>
+    </div>
+    <script src="login.js"></script>
+  </body>
 </html>
