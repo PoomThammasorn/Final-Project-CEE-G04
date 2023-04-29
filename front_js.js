@@ -60,6 +60,7 @@ const getKratooFromDB = async () => {
       itemsData = data.sort(customSort);
     })
     .catch((error) => console.error(error));
+  console.log(itemsData);
   showKratooInTable(itemsData);
 };
 const addKratoo = async () => {
