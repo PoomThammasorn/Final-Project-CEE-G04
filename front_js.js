@@ -203,10 +203,30 @@ function putUserProfile(data) {
 }
 
 const customSort = (a, b) => {
-  const a_date = new Date(a.post_date);
-  console.log(a_date);
-  const b_date = new Date(a.post_date);
-  console.log(b_date);
-  contents.log(a_date - b_date);
-  return a_date - b_date;
+  const list_a = a.split(/\s+/);
+  const a_date = list_a[0].split("/").map((str) => parseInt(str, 10));
+  const a_time = list_a[1].split(":").map((str) => parseInt(str, 10));
+  const time_a = new Date(
+    a_date[2],
+    a_date[1] - 1,
+    a_date[0],
+    a_time[0],
+    a_time[1],
+    a_time[2]
+  );
+  console.log(time_a);
+  const list_b = b.split(/\s+/);
+  const b_date = list_b[0].split("/").map((str) => parseInt(str, 10));
+  const b_time = list_b[1].split(":").map((str) => parseInt(str, 10));
+  const time_b = new Date(
+    b_date[2],
+    b_date[1] - 1,
+    b_date[0],
+    b_time[0],
+    b_time[1],
+    b_time[2]
+  );
+  console.log(time_b);
+  console.log(time_a - time_b);
+  return time_a - time_b;
 };
