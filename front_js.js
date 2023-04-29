@@ -26,8 +26,8 @@ function toTopic(n) {
   content.innerHTML =
     "<h2>" + topics[n] + "</h2><div>" + contents[n] + "</div>";
     content.innerHTML +=
-    '<span>answer this question : <br><br></span><input type="text" id="topic"><br>'+
-    '<button id="submit" >Submit</button>'; //ยังไม่มี onclick ***************************************************************
+    '<span>answer this question : <br><br></span><input type="text" id="content"><br>'+
+    '<button id="submit" onclick="addComment()">Submit</button>'; 
 
 }
 function toMainmenu() {
@@ -47,8 +47,6 @@ const showKratooInTable = (itemsData) => {
       topics.push(data.post_title);
       contents.push(data.post_content);
     }
-    console.log(topics);
-    console.log(contents)
     main=updateMain();
     toMainmenu();
 };
@@ -63,7 +61,6 @@ const getKratooFromDB = async () => {
       itemsData = data;
     })
     .catch((error) => console.error(error));
-    console.log(itemsData);
     showKratooInTable(itemsData);
 };
 const addKratoo = async () => {
@@ -132,8 +129,7 @@ const getCommentFromDB = async (post_id) => {
     .catch((error) => console.error(error));
 };
 const addComment = async (post_id) => {
-  /*const content = document.getElementById("content").value;*/
-  /* รบกวนแก้ centent ให้เป็น PARAMETER ที่รับ เนื้อหา comment เข้ามาให้หน่อยครับ*/
+  const content = document.getElementById("content").value;
   const author_id = "from mcv";
   const author = "from mcv";
   const itemToAdd = {
