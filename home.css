@@ -62,6 +62,13 @@ body {
   font-family: "Mitr", sans-serif;
   font-weight: bold;
 }
+#student-id {
+  color: #000000;
+  padding: 10px 0 20px 0;
+  font-size: 13px;
+  font-family: "Mitr", sans-serif;
+  font-weight: bold;
+}
 .mcv_img {
   width: 230px;
   display: block;

@@ -10,6 +10,8 @@ const getUserProfile = async () => {
   )
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
+      console.log("==================================");
       console.log(data.user);
       document.getElementById("eng-name-info").innerHTML = `${
         data.user.title_en == null ? "" : data.user.title_en
