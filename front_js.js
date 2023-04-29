@@ -66,7 +66,7 @@ const getKratooFromDB = async () => {
 };
 const addKratoo = async () => {
   getUserProfile();
-  const data = itemsData
+  const data = itemsData;
   const topic = document.getElementById("topic").value;
   const content = document.getElementById("content").value;
   const author_id = data.user.id;
