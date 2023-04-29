@@ -62,7 +62,6 @@ const getKratooFromDB = async () => {
   showKratooInTable(itemsData);
 };
 const addKratoo = async () => {
-  itemsData = getUserProfile();
   const topic = document.getElementById("topic").value;
   const content = document.getElementById("content").value;
   const author_id = itemsData.student.id;
@@ -184,7 +183,7 @@ const getUserProfile = async () => {
   )
     .then((response) => response.json())
     .then((data) => {
-      itemsData = data;
+      itemsData = data.data;
     })
     .catch((error) => console.error(error));
 };
