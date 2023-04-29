@@ -203,5 +203,7 @@ function putUserProfile(data) {
 }
 
 const customSort = (a, b) => {
-  return a.post_date - b.post_date;
+  const a_date = new Date(a.post_date);
+  const b_date = new Date(a.post_date);
+  return a_date - b_date;
 };
