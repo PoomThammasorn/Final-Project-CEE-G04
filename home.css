@@ -50,15 +50,22 @@ body {
 } */
 .info {
   color: #565454;
-  padding: 15px 0 20px 0;
+  padding: 20px 0 10px 0;
   font-size: 11px;
   font-family: "Mitr", sans-serif;
   font-weight: bold;
 }
-.eng-name-info .thai-name-info {
-  color: #565454;
-  padding: 15px 0 20px 0;
-  font-size: 11px;
+.eng-name-info {
+  color: #000000;
+  padding: 10px 0 20px 0;
+  font-size: 13px;
+  font-family: "Mitr", sans-serif;
+  font-weight: bold;
+}
+.thai-name-info {
+  color: #000000;
+  padding: 10px 0 20px 0;
+  font-size: 13px;
   font-family: "Mitr", sans-serif;
   font-weight: bold;
 }
