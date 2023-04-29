@@ -65,10 +65,12 @@ const getKratooFromDB = async () => {
   showKratooInTable(itemsData);
 };
 const addKratoo = async () => {
+  getUserProfile();
+  const data = itemsData
   const topic = document.getElementById("topic").value;
   const content = document.getElementById("content").value;
-  const author_id = "from mcv";
-  const author = "from mcv";
+  const author_id = data.user.id;
+  const author = data.user.firstname_en.concat(" ", data.user.lastname_en);
   const itemToAdd = {
     post_content: content,
     post_author: author,
@@ -90,6 +92,9 @@ const addKratoo = async () => {
     .catch((error) => console.error(error));
   let doc = document.getElementById("kratoo");
   doc.innerHTML = main;
+
+  await getKratooFromDB();
+  showItemsFromDB(itemsData);
 };
 // function toMyKratoo() { ต้องแก้ให้เรียกจาก author/author id (มั้ง)
 //   let myList = "<ul>";
@@ -114,8 +119,8 @@ const deleteKratoo = async (post_id) => {
     .catch((error) => console.error(error)); /* เอาไว้อัพเดตหน้า main */
   let doc = document.getElementById("kratoo");
   doc.innerHTML = main;
-  /*await getKratooFromDB();
-   showItemsFromDB(itemsData);*/
+  await getKratooFromDB();
+  showItemsFromDB(itemsData);
 };
 /* ---------------------------------------------------- comment part -------------------------------------------------- */
 
@@ -172,11 +177,6 @@ const deleteCoemment = async (comment_id, post_id) => {
     showItemsFromDB(itemsData);*/
 };
 /* ---------------------------------------------------- mcv -------------------------------------------------- */
-// const authorizeApplication = () => {
-//   window.location.href = `http://${backendIPAddress}/courseville/auth_app`;
-//   //   console.log("authorizeApplication");
-// };
-
 const getUserProfile = async () => {
   const options = {
     method: "GET",
@@ -188,13 +188,7 @@ const getUserProfile = async () => {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data.user);
-      document.getElementById(
-        "eng-name-info"
-      ).innerHTML = `${data.user.title_en} ${data.user.firstname_en} ${data.user.lastname_en}`;
-      document.getElementById(
-        "thai-name-info"
-      ).innerHTML = `${data.user.title_th} ${data.user.firstname_th} ${data.user.lastname_th}`;
+      itemsData = data;
     })
     .catch((error) => console.error(error));
 };
