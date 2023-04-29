@@ -9,6 +9,7 @@ const getUserProfile = async () => {
     options
   )
     .then((response) => response.json())
+    .then((data) => data.data)
     .then((data) => {
       console.log(data);
       document.getElementById(
