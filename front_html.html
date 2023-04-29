@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>MyCourseBoard</title>
+    <link href="front_css.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body onload="getKratooFromDB()">
+    <div class="header">
+      <a href="#">
+        <h1>MyCourseBoard</h1>
+      </a>
+      <p>Better MCV</p>
+    </div>
+    <div class="container">
+      <div class="sidebar">
+        <div class="compose" onclick="toAddKratooPage()">สร้างกระทู้</div>
+        <div><a href="#" onclick="toMainmenu()">กระทู้ทั้งหมด</a></div>
+        <div><a href="#" onclick="toMyKratoo()">ส่งแล้ว</a></div>
+      </div>
+      <div id="kratoo">
+        <ul>
+        </ul>
+      </div>
+    </div>
+    <script src="front_js.js"></script>
+  </body>
+</html>
