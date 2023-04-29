@@ -203,7 +203,7 @@ function putUserProfile(data) {
 }
 
 const customSort = (a, b) => {
-  const list_a = a.split(/\s+/);
+  const list_a = String(a).split(/\s+/);
   const a_date = list_a[0].split("/").map((str) => parseInt(str, 10));
   const a_time = list_a[1].split(":").map((str) => parseInt(str, 10));
   const time_a = new Date(
@@ -215,7 +215,7 @@ const customSort = (a, b) => {
     a_time[2]
   );
   console.log(time_a);
-  const list_b = b.split(/\s+/);
+  const list_b = String(b).split(/\s+/);
   const b_date = list_b[0].split("/").map((str) => parseInt(str, 10));
   const b_time = list_b[1].split(":").map((str) => parseInt(str, 10));
   const time_b = new Date(
