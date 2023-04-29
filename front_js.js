@@ -57,7 +57,7 @@ const getKratooFromDB = async () => {
   await fetch(`http://${backendIPAddress}/post`, options)
     .then((response) => response.json())
     .then((data) => {
-      itemsData = data;
+      itemsData = data.sort(customSort);
     })
     .catch((error) => console.error(error));
   showKratooInTable(itemsData);
@@ -128,7 +128,7 @@ const getCommentFromDB = async (post_id) => {
   await fetch(`http://${backendIPAddress}/post/comments/${post_id}`, options)
     .then((response) => response.json())
     .then((data) => {
-      itemsData = data.sort(customSort);
+      itemsData = data;
     })
     .catch((error) => console.error(error));
 };
