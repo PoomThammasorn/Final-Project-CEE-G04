@@ -1,6 +1,7 @@
 const backendIPAddress = "52.20.54.127:3000";
 
 let itemsData;
+let PersonalData;
 let topics = [];
 let contents = [];
 let main = document.getElementById("kratoo").innerHTML;
@@ -62,10 +63,11 @@ const getKratooFromDB = async () => {
   showKratooInTable(itemsData);
 };
 const addKratoo = async () => {
+  getUserProfile();
   const topic = document.getElementById("topic").value;
   const content = document.getElementById("content").value;
-  const author_id = itemsData.student.id;
-  const author = itemsData.student.firstname_en.concat(" ", itemsData.student.lastname_en);
+  const author_id = PersonalData.student.id;
+  const author = PersonalData.student.firstname_en.concat(" ", PersonalData.student.lastname_en);
   const itemToAdd = {
     post_content: content,
     post_author: author,
@@ -183,7 +185,7 @@ const getUserProfile = async () => {
   )
     .then((response) => response.json())
     .then((data) => {
-      itemsData = data.data;
+      PersonalData = data.data;
     })
     .catch((error) => console.error(error));
 };
