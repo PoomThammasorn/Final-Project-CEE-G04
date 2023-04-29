@@ -1,10 +1,9 @@
 const backendIPAddress = "52.20.54.127:3000";
 
 let itemsData;
-let main = document.getElementById("kratoo").innerHTML;
 let topics = [];
 let contents = [];
-let myKratoo = [];
+let main = document.getElementById("kratoo").innerHTML;
 let addkratoo =
   '<span>Topic :</span><input type="text" id="topic"><br><span>Question :</span>\
 <textarea id="content" rows="4" cols="50"></textarea><br><button id="submit" onclick="addKratoo()">Submit</button></div>';
@@ -49,6 +48,9 @@ const showKratooInTable = (itemsData) => {
   main = updateMain();
   toMainmenu();
 };
+const showItemsFromDB = (itemsData) => {
+  //ทำไงอ่ะ
+};
 const getKratooFromDB = async () => {
   const options = {
     method: "GET",
@@ -89,29 +91,31 @@ const addKratoo = async () => {
   let doc = document.getElementById("kratoo");
   doc.innerHTML = main;
 };
-function toMyKratoo() {
-  let myList = "<ul>";
-  for (m of myKratoo) {
-    i = topics.indexOf(m);
-    myList += '<a href="#" onclick="toTopic(' + i + ')">';
-    myList += '<li class="topic">';
-    myList += "<h2>" + topics[i] + "</h2>";
-    myList += '<button id="delete" onclick="deleteKratoo()">Delete</button>';
-    myList += "</li></a>";
-  }
-  myList += "</ul>";
-  document.getElementById("kratoo").innerHTML = myList;
-}
+// function toMyKratoo() { ต้องแก้ให้เรียกจาก author/author id (มั้ง)
+//   let myList = "<ul>";
+//   for (m of myKratoo) {
+//     i = topics.indexOf(m);
+//     myList += '<a href="#" onclick="toTopic(' + i + ')">';
+//     myList += '<li class="topic">';
+//     myList += "<h2>" + topics[i] + "</h2>";
+//     myList += '<button id="delete" onclick="deleteKratoo()">Delete</button>';
+//     myList += "</li></a>";
+//   }
+//   myList += "</ul>";
+//   document.getElementById("kratoo").innerHTML = myList;
+// }
 const deleteKratoo = async (post_id) => {
   const options = {
-    method: "DELET",
+    method: "DELETE",
     credentials: "include",
   };
   await fetch(`http://${backendIPAddress}/post/${post_id}`, options)
     .then((response) => response.json())
-    .catch((error) => console.error(error)); /* เอาไว้อัพเดตหน้า mian */
+    .catch((error) => console.error(error)); /* เอาไว้อัพเดตหน้า main */
+  let doc = document.getElementById("kratoo");
+  doc.innerHTML = main;
   /*await getKratooFromDB();
-   showItemsFromBD(itemsData);*/
+   showItemsFromDB(itemsData);*/
 };
 /* ---------------------------------------------------- comment part -------------------------------------------------- */
 
@@ -130,8 +134,8 @@ const getCommentFromDB = async (post_id) => {
 
 const addComment = async (post_id) => {
   const content = document.getElementById("content").value;
-  const author_id = "from mcv";
-  const author = "from mcv";
+  // const author_id = "from mcv";
+  // const author = "from mcv";
   const itemToAdd = {
     comment_author: "from mcv",
     comment_author_id: "from mcv",
@@ -150,12 +154,12 @@ const addComment = async (post_id) => {
   await fetch(`http://${backendIPAddress}/post/comments/${post_id}`, options)
     .then((response) => response.json())
     .catch((error) => console.error(error)); /* เอาไว้อัพเดตหน้า comemnt */
-  /*await getCommentFromDB(post_id);  
-    showItemsFromBD(itemsData);*/
+  // await getCommentFromDB(post_id);
+  // showItemsFromDB(itemsData);
 };
 const deleteCoemment = async (comment_id, post_id) => {
   const options = {
-    method: "DELET",
+    method: "DELETE",
     credentials: "include",
   };
   await fetch(
@@ -165,7 +169,7 @@ const deleteCoemment = async (comment_id, post_id) => {
     .then((response) => response.json())
     .catch((error) => console.error(error)); /* เอาไว้อัพเดตหน้า comemnt */
   /*await getCommentFromDB(post_id);  
-    showItemsFromBD(itemsData);*/
+    showItemsFromDB(itemsData);*/
 };
 /* ---------------------------------------------------- mcv -------------------------------------------------- */
 // const authorizeApplication = () => {
