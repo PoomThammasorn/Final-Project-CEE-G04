@@ -14,10 +14,10 @@ const getUserProfile = async () => {
       //   console.log("==================================");
       console.log(data.user);
       document.getElementById("eng-name-info").innerHTML = `${
-        data.user.title_en == null ? "" : data.user.title_en
+        data.user.title_en ? "" : data.user.title_en
       } ${data.user.firstname_en} ${data.user.lastname_en}`;
       document.getElementById("thai-name-info").innerHTML = `${
-        data.user.title_en == null ? "" : data.user.title_en
+        data.user.title_en ? "" : data.user.title_en
       } ${data.user.firstname_th} ${data.user.lastname_th}`;
       document.getElementById("student-id").innerHTML = `${data.user.id}`;
     })
