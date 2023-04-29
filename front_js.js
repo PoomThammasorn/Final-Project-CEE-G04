@@ -2,18 +2,8 @@ const backendIPAddress = "52.20.54.127:3000";
 
 let itemsData;
 let main = document.getElementById("kratoo").innerHTML;
-let topics = [
-  "Tips for web design?",
-  "Help my ComProg homework please",
-  "i don't understand backend development. someone helpppppp",
-  "Should I drop ComEngEss???",
-];
-let contents = [
-  "I wanna try to create a website. Anybody got some tips for making a good site?",
-  "I don't understand the NumPy homework in ComProg class. Can someone help me asap?",
-  "I need to create a web as my final project, but I don't know how to connect to database.",
-  "I don't think I've been doing well in comengess, was thinking about dropping wdyt?",
-];
+let topics = [];
+let contents = [];
 let myKratoo = [];
 let addkratoo =
   '<span>Topic :</span><input type="text" id="topic"><br><span>Question :</span>\
