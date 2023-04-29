@@ -48,9 +48,6 @@ const showKratooInTable = (itemsData) => {
   main = updateMain();
   toMainmenu();
 };
-const showItemsFromDB = (itemsData) => {
-  //ทำไงอ่ะ
-};
 const getKratooFromDB = async () => {
   const options = {
     method: "GET",
@@ -65,12 +62,11 @@ const getKratooFromDB = async () => {
   showKratooInTable(itemsData);
 };
 const addKratoo = async () => {
-  getUserProfile();
-  const data = itemsData;
+  itemsData = getUserProfile();
   const topic = document.getElementById("topic").value;
   const content = document.getElementById("content").value;
-  const author_id = data.user.id;
-  const author = data.user.firstname_en.concat(" ", data.user.lastname_en);
+  const author_id = itemsData.student.id;
+  const author = itemsData.student.firstname_en.concat(" ", itemsData.student.lastname_en);
   const itemToAdd = {
     post_content: content,
     post_author: author,
@@ -94,7 +90,7 @@ const addKratoo = async () => {
   doc.innerHTML = main;
 
   await getKratooFromDB();
-  showItemsFromDB(itemsData);
+  showKratooInTable(itemsData);
 };
 // function toMyKratoo() { ต้องแก้ให้เรียกจาก author/author id (มั้ง)
 //   let myList = "<ul>";
