@@ -29,6 +29,7 @@ function updateMain() {
     i += 1;
   }
   main += "</ul>";
+  return main
 }
 function toTopic(n) {
   var content = document.getElementById("kratoo");
@@ -46,6 +47,16 @@ function toAddKratooPage() {
 const showKratooInTable = (itemsData) => {
   /* เป็น methond เอาไว้ให้แสดงข้อมูลจาก backend คับ อันนี้รบกวนน้องๆเขียน 
     เข้าใจว่าถ้า ใช้อันนี้ตอน refresh กับตอน submit แล้วกลับมาหน้าแรก ข้อมูลจะไม่หาย*/
+    topics=[];
+    contents=[];
+    for (data of itemsData){
+      topics.push(data.post_title);
+      contents.push(data.post_content);
+    }
+    console.log(topics);
+    console.log(contents)
+    main=updateMain();
+    toMainmenu();
 };
 const getKratooFromDB = async () => {
   const options = {
@@ -58,6 +69,8 @@ const getKratooFromDB = async () => {
       itemsData = data;
     })
     .catch((error) => console.error(error));
+    console.log(itemsData);
+    showKratooInTable(itemsData);
 };
 const addKratoo = async () => {
   const topic = document.getElementById("topic").value;
