@@ -12,7 +12,7 @@ const getUserProfile = async () => {
     .then((data) => {
       //   console.log(data);
       //   console.log("==================================");
-      console.log(data.user);
+      console.log(data);
       document.getElementById("eng-name-info").innerHTML = `${
         data.user.title_en == null || data.user.title_en.trim() === ""
           ? ""
