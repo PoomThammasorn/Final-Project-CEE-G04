@@ -58,10 +58,10 @@ const getKratooFromDB = async () => {
     .then((response) => response.json())
     .then((data) => {
       itemsData = data.sort(customSort);
+      console.log(data);
+      console.log(data.sort(customSort));
     })
     .catch((error) => console.error(error));
-  console.log(data);
-  console.log(data.sort(customSort));
   console.log(itemsData);
   showKratooInTable(itemsData);
 };
