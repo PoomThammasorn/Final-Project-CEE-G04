@@ -1,3 +1,5 @@
+const { Console } = require("console");
+
 const backendIPAddress = "52.20.54.127:3000";
 let itemsData;
 let PersonalData;
@@ -34,7 +36,7 @@ function toTopic(n) {
     '<button id="submit" onclick="addComment()">Submit</button>';
   getCommentFromDB(post_id);
   showCommentFromDB(itemsData);
-};
+}
 
 function toMainmenu() {
   var content = document.getElementById("kratoo");
@@ -250,6 +252,7 @@ function putUserProfile(data) {
   ).innerHTML = `${data.student.lastname_en}`;
   document.getElementById("student-id").innerHTML = `${data.student.id}`;
   var image = document.getElementById("profile");
+  Console.log(data.account.profile_pict);
   image.src = `${data.account.profile_pict}`;
 }
 
