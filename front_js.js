@@ -1,5 +1,4 @@
-const { Console } = require("console");
-
+// const { Console } = require("console");
 const backendIPAddress = "52.20.54.127:3000";
 let itemsData;
 let PersonalData;
