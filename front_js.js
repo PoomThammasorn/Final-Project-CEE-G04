@@ -201,9 +201,10 @@ const showCommentFromDB = (itemsData, post_id) => {
     m += "</div>";
   }
   content.innerHTML += m;
+  content.innerHTML += '<div class="box">';
   content.innerHTML +=
-    '<div class="box">' +
-    '<textarea rows="4" cols="50" placeholder="Wanna say something?" type="text" id="comment-box"></textarea><br>' +
+    '<textarea rows="4" cols="50" placeholder="Wanna say something?" type="text" id="comment-box"></textarea><br>';
+  content.innerHTML +=
     '<button id="comment-btn" onclick="addComment(${post_id})>Submit</button></div>';
 };
 
