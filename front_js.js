@@ -20,13 +20,15 @@ function updateMain() {
   main += "</ul>";
   return main;
 }
-function toTopic(n) {
+const toTopic = async (n) => {
   var content = document.getElementById("kratoo");
   content.innerHTML =
     "<h2>" + topics[n] + "</h2><div>" + contents[n] + "</div>";
   content.innerHTML +=
-    '<span>answer this question : <br><br></span><input type="text" id="content"><br>' +
+    '<span>Answer this question : <br><br></span><input type="text" id="content"><br>' +
     '<button id="submit" onclick="addComment()">Submit</button>';
+  await getCommentFromDB();
+  showCommentFromDB();
 }
 function toMainmenu() {
   var content = document.getElementById("kratoo");
@@ -119,7 +121,7 @@ const deleteKratoo = async (post_id) => {
   let doc = document.getElementById("kratoo");
   doc.innerHTML = main;
   await getKratooFromDB();
-  showItemsFromDB(itemsData);
+  showKratooInTable(itemsData);
 };
 /* ---------------------------------------------------- comment part -------------------------------------------------- */
 
@@ -135,14 +137,29 @@ const getCommentFromDB = async (post_id) => {
     })
     .catch((error) => console.error(error));
 };
-
+const showCommentFromDB = (itemsData) => {
+  let comments = [];
+  let commentors = [];
+  for (data of itemsData) {
+    comments.push(data.comment_content);
+    commentors.push(data.comment_author);
+  };
+  var content = document.getElementById("kratoo");
+  let i=0;
+  for (c in comments) {
+    content.innerHTML += '<a><li class="comment">';
+    content.innerHTML += '<h3>' + commentors[i] + '</h3>';
+    content.innerHTML += '<div>' + comments[i] + '</div>';
+    content.innerHTML += '</li></a>';
+  };
+}
 const addComment = async (post_id, PersonalData) => {
   const content = document.getElementById("content").value;
   const author_id = PersonalData.student.id;
   const author = PersonalData.student.firstname_en + " " + PersonalData.student.lastname_en;
   const itemToAdd = {
-    comment_author: "from mcv",
-    comment_author_id: "from mcv",
+    comment_author: author,
+    comment_author_id: author_id,
     comment_content: content,
     comment_dislike: 0,
     comment_like: 0,
@@ -158,10 +175,10 @@ const addComment = async (post_id, PersonalData) => {
   await fetch(`http://${backendIPAddress}/post/comments/${post_id}`, options)
     .then((response) => response.json())
     .catch((error) => console.error(error)); /* เอาไว้อัพเดตหน้า comemnt */
-  // await getCommentFromDB(post_id);
-  // showItemsFromDB(itemsData);
+  await getCommentFromDB(post_id);
+  showCommentFromDB(itemsData);
 };
-const deleteCoemment = async (comment_id, post_id) => {
+const deleteComment = async (comment_id, post_id) => {
   const options = {
     method: "DELETE",
     credentials: "include",
@@ -172,8 +189,8 @@ const deleteCoemment = async (comment_id, post_id) => {
   )
     .then((response) => response.json())
     .catch((error) => console.error(error)); /* เอาไว้อัพเดตหน้า comemnt */
-  /*await getCommentFromDB(post_id);  
-    showItemsFromDB(itemsData);*/
+  await getCommentFromDB(post_id);  
+  showCommentFromDB(itemsData);
 };
 /* ---------------------------------------------------- mcv -------------------------------------------------- */
 const getUserProfile = async () => {
