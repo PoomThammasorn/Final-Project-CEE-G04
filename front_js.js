@@ -5,6 +5,7 @@ let PersonalData;
 let topics = [];
 let contents = [];
 let writer = [];
+let writer_id = [];
 let date = [];
 let post_id_list = [];
 let main = document.getElementById("kratoo").innerHTML;
@@ -32,10 +33,17 @@ function updateMain() {
 
 function toTopic(n) {
   main = document.getElementById("kratoo");
-  main = '<div class="box in-topic-box">';
+  main = '<div class="box in-topic-box ' + post_id_list[n] + '">';
   main += '<p class="in-topic">' + topics[n] + "</p>";
   main += '<p class="in-content">' + contents[n] + "</p>";
   main += '<span class="in-author">By ' + writer[n] + " " + date[n] + "</span>";
+  if (PersonalData.id == writer_id[n]) {
+    main +=
+      '<button class="delete-btn" onclick="deleteKratoo(' +
+      post_id_list[n] +
+      ')">Delete</button>';
+  }
+  // main += '<span id="id-to-add">' + post_id_list[n] + "</span>";
   main += "</div>";
   toMainmenu();
   getCommentFromDB(post_id_list[n]);
@@ -59,10 +67,12 @@ const showKratooInTable = (itemsData) => {
   writer = [];
   date = [];
   post_id_list = [];
+  writer_id = [];
   for (data of itemsData) {
     topics.push(data.post_title);
     contents.push(data.post_content);
     writer.push(data.post_author);
+    writer_id.push(data.post_author_id);
     date.push(data.post_date);
     post_id_list.push(data.post_id);
   }
@@ -184,16 +194,17 @@ const showCommentFromDB = (itemsData, post_id) => {
     m += '<p class="commentor">' + c[0] + "</p>";
     m += '<p class="comment">' + c[1] + "</p>";
     m += '<span class="comment-date">' + c[2] + "</span>";
+    m += '<span id="id-to-add">' + post_id_list[n] + "</span>";
     m += "</div>";
   }
   content.innerHTML += m;
   content.innerHTML +=
     '<div class="box">' +
     '<textarea rows="4" cols="50" placeholder="Wanna say something?" type="text" id="comment-box"></textarea><br>' +
-    '<button id="comment-btn" onclick="addComment(post_id)">Submit</button></div>';
+    '<button id="comment-btn" onclick="addComment()">Submit</button></div>';
 };
 
-const addComment = async (post_id) => {
+const addComment = async () => {
   const content = document.getElementById("content").value;
   const author_id = PersonalData.student.id;
   const author =

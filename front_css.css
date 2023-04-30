@@ -358,3 +358,17 @@ li {
   cursor: pointer;
   border: 2px solid #0d99f0;
 }
+
+.delete-btn {
+  margin-top: 20px;
+  border-radius: 8px;
+  padding: 5px 5px;
+  border: 2px solid #aaa;
+  background: white;
+  cursor: pointer;
+  font-family: "Mitr", sans-serif;
+  font-size: 1em;
+  text-align: center;
+  width: 70px;
+  color: #000000;
+}
