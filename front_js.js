@@ -128,7 +128,7 @@ const deleteKratoo = async (post_id) => {
   let doc = document.getElementById("kratoo");
   doc.innerHTML = main;
   await getKratooFromDB();
-  showKratooInTable(itemsData);
+  showItemsFromDB(itemsData);
 };
 /* ---------------------------------------------------- comment part -------------------------------------------------- */
 
@@ -165,8 +165,8 @@ const addComment = async (post_id, PersonalData) => {
   const author_id = PersonalData.student.id;
   const author = PersonalData.student.firstname_en + " " + PersonalData.student.lastname_en;
   const itemToAdd = {
-    comment_author: author,
-    comment_author_id: author_id,
+    comment_author: "from mcv",
+    comment_author_id: "from mcv",
     comment_content: content,
     comment_dislike: 0,
     comment_like: 0,
@@ -196,7 +196,7 @@ const deleteComment = async (comment_id, post_id) => {
   )
     .then((response) => response.json())
     .catch((error) => console.error(error)); /* เอาไว้อัพเดตหน้า comemnt */
-  await getCommentFromDB(post_id);  
+  getCommentFromDB(post_id);  
   showCommentFromDB(itemsData);
 };
 /* ---------------------------------------------------- mcv -------------------------------------------------- */
