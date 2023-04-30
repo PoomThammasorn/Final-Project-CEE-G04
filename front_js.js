@@ -6,6 +6,7 @@ let topics = [];
 let contents = [];
 let writer = [];
 let date = [];
+let post_id_list = [];
 let main = document.getElementById("kratoo").innerHTML;
 let addkratoo =
   ' <input type="text" placeholder="Topic" id="topic" name="name" id="topic" maxlength="60"/><br>\
@@ -31,20 +32,13 @@ function updateMain() {
 
 function toTopic(n) {
   main = document.getElementById("kratoo");
-  // content.innerHTML = "<div>" + writer[n] + " " + date[n] + "</div>";
-  // content.innerHTML +=
-  //   "<h2>" + topics[n] + "</h2><div>" + contents[n] + "</div>";
   main = '<div class="box in-topic-box">';
   main += '<p class="in-topic">' + topics[n] + "</p>";
   main += '<p class="in-content">' + contents[n] + "</p>";
   main += '<span class="in-author">By ' + writer[n] + " " + date[n] + "</span>";
   main += "</div>";
-  // content.innerHTML +=
-  //   '<span>Answer this question : <br><br></span><input type="text" id="content"><br>' +
-  //   '<button id="submit" onclick="addComment()">Submit</button>';
   toMainmenu();
-  getCommentFromDB("ad3a30ba-4e85-4f25-9d63-7de170c8f00a");
-  // showCommentFromDB(itemsData);
+  getCommentFromDB(post_id_list[n]);
 }
 
 function toMainmenu() {
@@ -64,11 +58,13 @@ const showKratooInTable = (itemsData) => {
   contents = [];
   writer = [];
   date = [];
+  post_id_list = [];
   for (data of itemsData) {
     topics.push(data.post_title);
     contents.push(data.post_content);
     writer.push(data.post_author);
     date.push(data.post_date);
+    post_id_list.push(data.post_id);
   }
   main = updateMain();
   toMainmenu();
@@ -83,11 +79,8 @@ const getKratooFromDB = async () => {
     .then((response) => response.json())
     .then((data) => {
       itemsData = data.sort(customSort);
-      // console.log(data);
-      // console.log(data.sort(customSort));
     })
     .catch((error) => console.error(error));
-  // console.log(itemsData);
   showKratooInTable(itemsData);
 };
 
