@@ -214,8 +214,8 @@ const showCommentFromDB = (itemsData, post_id) => {
       <span class="comment-date">${c[2]}</span>
     `;
     if (PersonalData.student.id == c[3]) {
-      comment.innerHTML += `
-      <button class="comment-delete-btn" onclick="deleteComment('${c[4]},'${post_id}')">Delete</button>
+      content.innerHTML += `
+      <button class="delete-btn" onclick="deleteComment('${c[4]},'${post_id}')">Delete</button>
       `;
     }
     content.innerHTML += `</div>`;
