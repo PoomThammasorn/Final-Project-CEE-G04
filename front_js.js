@@ -37,9 +37,9 @@ function toTopic(n) {
   main += '<p class="in-topic">' + topics[n] + "</p>";
   main += '<p class="in-content">' + contents[n] + "</p>";
   main += '<span class="in-author">By ' + writer[n] + " " + date[n] + "</span>";
-  console.log(PersonalData.id);
+  console.log(PersonalData.student.id);
   console.log(writer_id[n]);
-  if (PersonalData.id == writer_id[n]) {
+  if (PersonalData.student.id == writer_id[n]) {
     main +=
       '<button class="delete-btn" onclick="deleteKratoo(' +
       post_id_list[n] +
