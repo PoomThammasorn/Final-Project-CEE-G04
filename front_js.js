@@ -234,7 +234,7 @@ const addComment = async (post_id) => {
   await fetch(`http://${backendIPAddress}/post/comments/${post_id}`, options)
     .then((response) => response.json())
     .catch((error) => console.error(error)); /* เอาไว้อัพเดตหน้า comemnt */
-  await getMyKratooFromDB(post_id);
+  getCommentFromDB(post_id);
   // showCommentFromDB(itemsData);
 };
 const deleteComment = async (comment_id, post_id) => {
