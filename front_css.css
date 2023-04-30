@@ -8,7 +8,7 @@ body {
 }
 
 h1 {
-  font-family: "Mitr", sans-serif;
+  font-family: "Sigma Five", cursive;
   font-size: 45px;
   font-weight: bold;
   color: #fff;
@@ -78,7 +78,7 @@ div {
 .header {
   padding-left: 18px;
   text-align: left;
-  background: #018ada;
+  background: linear-gradient(to right, #018ada, #6dbbe8, #018ada);
   font-size: 15px;
   height: 150px;
   width: 100%;
@@ -87,7 +87,7 @@ div {
 .img {
   width: 170px;
   position: absolute;
-  top: 5.6em;
+  top: 6em;
   left: 5.8em;
 }
 
@@ -97,7 +97,7 @@ div {
   font-size: 20px;
   font-weight: bold;
   position: absolute;
-  top: 4em;
+  top: 4.3em;
   left: 1em;
 }
 
@@ -224,6 +224,10 @@ ul > a :hover {
   font-family: "Mitr", sans-serif;
   font-size: 14px;
   font-weight: 550;
+}
+
+#student-id {
+  color: #000;
 }
 
 #profile {
