@@ -37,17 +37,11 @@ function toTopic(n) {
   main += '<p class="in-topic">' + topics[n] + "</p>";
   main += '<p class="in-content">' + contents[n] + "</p>";
   main += '<span class="in-author">By ' + writer[n] + " " + date[n] + "</span>";
-  console.log(PersonalData.student.id);
-  console.log(writer_id[n]);
   if (PersonalData.student.id == writer_id[n]) {
-    main +=
-      '<button class="delete-btn" onclick="' +
-      "deleteKratoo('" +
-      post_id_list[n] +
-      "'" +
-      ')">Delete</button>';
+    main += `
+      <button class="delete-btn" onclick="deleteKratoo('${post_id_list[n]}')">Delete</button>
+    `;
   }
-  // main += '<span id="id-to-add">' + post_id_list[n] + "</span>";
   main += "</div>";
   toMainmenu();
   getCommentFromDB(post_id_list[n]);
@@ -192,15 +186,15 @@ const showCommentFromDB = (itemsData, post_id) => {
     comments.push(c);
   }
   var content = document.getElementById("kratoo");
-  let m = "";
   for (c of comments) {
-    m += '<div class="box comment-box">';
-    m += '<p class="commentor">' + c[0] + "</p>";
-    m += '<p class="comment">' + c[1] + "</p>";
-    m += '<span class="comment-date">' + c[2] + "</span>";
-    m += "</div>";
+    content.innerHTML += `
+    <div class="box comment-box">
+      <p class="commentor">${c[0]}</p>
+      <p class="comment">${c[1]}</p>
+      <span class="comment-date">${c[2]}</span>
+    </div>
+    `;
   }
-  content.innerHTML += m;
   content.innerHTML += `
   <div class="box">
       <textarea rows="4" cols="50" placeholder="Wanna say something?"type="text" id="comment-box"></textarea><br>
