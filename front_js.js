@@ -9,6 +9,7 @@ let main = document.getElementById("kratoo").innerHTML;
 let addkratoo =
   ' <input type="text" placeholder="Topic" id="topic" name="name" id="topic" maxlength="60"/><br>\
 <textarea id="content" placeholder="Content" rows="4" cols="50"></textarea><br><button id="submit" onclick="addKratoo(PersonalData)">Submit</button></div>';
+
 function updateMain() {
   let main = "<ul>";
   let i = 0;
@@ -22,6 +23,7 @@ function updateMain() {
   main += "</ul>";
   return main;
 }
+
 const toTopic = async (n) => {
   var content = document.getElementById("kratoo");
   content.innerHTML = "<div>" + writer[n] + " " + date[n] + "</div>";
@@ -32,15 +34,18 @@ const toTopic = async (n) => {
     '<button id="submit" onclick="addComment()">Submit</button>';
   await getCommentFromDB();
   showCommentFromDB();
-}
+};
+
 function toMainmenu() {
   var content = document.getElementById("kratoo");
   content.innerHTML = main;
 }
+
 function toAddKratooPage() {
   var content = document.getElementById("kratoo");
   content.innerHTML = addkratoo;
 }
+
 const showKratooInTable = (itemsData) => {
   /* เป็น methond เอาไว้ให้แสดงข้อมูลจาก backend คับ อันนี้รบกวนน้องๆเขียน 
     เข้าใจว่าถ้า ใช้อันนี้ตอน refresh กับตอน submit แล้วกลับมาหน้าแรก ข้อมูลจะไม่หาย*/
@@ -57,6 +62,7 @@ const showKratooInTable = (itemsData) => {
   main = updateMain();
   toMainmenu();
 };
+
 const getKratooFromDB = async () => {
   const options = {
     method: "GET",
@@ -73,11 +79,28 @@ const getKratooFromDB = async () => {
   console.log(itemsData);
   showKratooInTable(itemsData);
 };
+
+const getMyKratooFromDB = async (student_id) => {
+  const options = {
+    method: "GET",
+    credentials: "include",
+  };
+  await fetch(`http://${backendIPAddress}/post/${student_id}`, options)
+    .then((response) => response.json())
+    .then((data) => {
+      itemsData = data.sort(customSort);
+    })
+    .catch((error) => console.error(error));
+  console.log(itemsData);
+  showKratooInTable(itemsData);
+};
+
 const addKratoo = async (PersonalData) => {
   const topic = document.getElementById("topic").value;
   const content = document.getElementById("content").value;
   const author_id = PersonalData.student.id;
-  const author = PersonalData.student.firstname_en + " " + PersonalData.student.lastname_en;
+  const author =
+    PersonalData.student.firstname_en + " " + PersonalData.student.lastname_en;
   const itemToAdd = {
     post_content: content,
     post_author: author,
@@ -104,19 +127,11 @@ const addKratoo = async (PersonalData) => {
   showKratooInTable(itemsData);
   location.reload();
 };
-// function toMyKratoo() { ต้องแก้ให้เรียกจาก author/author id (มั้ง)
-//   let myList = "<ul>";
-//   for (m of myKratoo) {
-//     i = topics.indexOf(m);
-//     myList += '<a href="#" onclick="toTopic(' + i + ')">';
-//     myList += '<li class="topic">';
-//     myList += "<h2>" + topics[i] + "</h2>";
-//     myList += '<button id="delete" onclick="deleteKratoo()">Delete</button>';
-//     myList += "</li></a>";
-//   }
-//   myList += "</ul>";
-//   document.getElementById("kratoo").innerHTML = myList;
-// }
+
+function toMyKratoo() {
+  getMyKratooFromDB(PersonalData.student.id);
+}
+
 const deleteKratoo = async (post_id) => {
   const options = {
     method: "DELETE",
@@ -144,29 +159,32 @@ const getCommentFromDB = async (post_id) => {
     })
     .catch((error) => console.error(error));
 };
+
 const showCommentFromDB = (itemsData) => {
   let comments = [];
   let commentors = [];
   for (data of itemsData) {
     comments.push(data.comment_content);
     commentors.push(data.comment_author);
-  };
+  }
   var content = document.getElementById("kratoo");
-  let i=0;
+  let i = 0;
   for (c in comments) {
     content.innerHTML += '<a><li class="comment">';
-    content.innerHTML += '<h3>' + commentors[i] + '</h3>';
-    content.innerHTML += '<div>' + comments[i] + '</div>';
-    content.innerHTML += '</li></a>';
-  };
-}
+    content.innerHTML += "<h3>" + commentors[i] + "</h3>";
+    content.innerHTML += "<div>" + comments[i] + "</div>";
+    content.innerHTML += "</li></a>";
+  }
+};
+
 const addComment = async (post_id, PersonalData) => {
   const content = document.getElementById("content").value;
   const author_id = PersonalData.student.id;
-  const author = PersonalData.student.firstname_en + " " + PersonalData.student.lastname_en;
+  const author =
+    PersonalData.student.firstname_en + " " + PersonalData.student.lastname_en;
   const itemToAdd = {
-    comment_author: "from mcv",
-    comment_author_id: "from mcv",
+    comment_author: author,
+    comment_author_id: author_id,
     comment_content: content,
     comment_dislike: 0,
     comment_like: 0,
@@ -196,7 +214,7 @@ const deleteComment = async (comment_id, post_id) => {
   )
     .then((response) => response.json())
     .catch((error) => console.error(error)); /* เอาไว้อัพเดตหน้า comemnt */
-  getCommentFromDB(post_id);  
+  getCommentFromDB(post_id);
   showCommentFromDB(itemsData);
 };
 /* ---------------------------------------------------- mcv -------------------------------------------------- */
