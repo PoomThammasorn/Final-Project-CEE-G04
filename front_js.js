@@ -1,4 +1,3 @@
-// const { Console } = require("console");
 const backendIPAddress = "52.20.54.127:3000";
 let itemsData;
 let PersonalData;
@@ -235,7 +234,7 @@ const addComment = async (post_id) => {
   await fetch(`http://${backendIPAddress}/post/comments/${post_id}`, options)
     .then((response) => response.json())
     .catch((error) => console.error(error)); /* เอาไว้อัพเดตหน้า comemnt */
-  await getCommentFromDB(post_id);
+  await getMyKratooFromDB(post_id);
   // showCommentFromDB(itemsData);
 };
 const deleteComment = async (comment_id, post_id) => {
@@ -249,8 +248,9 @@ const deleteComment = async (comment_id, post_id) => {
   )
     .then((response) => response.json())
     .catch((error) => console.error(error)); /* เอาไว้อัพเดตหน้า comemnt */
-  getCommentFromDB(post_id);
-  showCommentFromDB(itemsData);
+  // getCommentFromDB(post_id);
+  // showCommentFromDB(itemsData);
+  getMyKratooFromDB(post_id);
 };
 /* ---------------------------------------------------- mcv -------------------------------------------------- */
 const getUserProfile = async () => {
