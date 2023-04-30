@@ -24,6 +24,7 @@ h1 {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
+  position: relative;
 }
 
 .container {
@@ -202,4 +203,27 @@ ul > a :hover {
   border: none;
   padding: 16px 16px;
   border-radius: 10px 10px 10px 10px;
+}
+
+.blank {
+  height: 280px;
+}
+
+.info {
+  padding: 16px 16px 16px 16px;
+  border-radius: 10px 10px 10px 10px;
+  background-color: #ffbc6386;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Mitr", sans-serif;
+  font-size: 15px;
+  font-weight: 530;
+}
+
+#profile {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
