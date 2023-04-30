@@ -44,13 +44,8 @@ const showKratooInTable = (itemsData) => {
     เข้าใจว่าถ้า ใช้อันนี้ตอน refresh กับตอน submit แล้วกลับมาหน้าแรก ข้อมูลจะไม่หาย*/
   topics = [];
   contents = [];
-<<<<<<< HEAD
   writer = [];
   date = [];
-||||||| 3d890a9
-=======
-  // getKratooFromDB();
->>>>>>> d9f8a8f23831f048586610b0c0932b1cc7b70d59
   for (data of itemsData) {
     topics.push(data.post_title);
     contents.push(data.post_content);
