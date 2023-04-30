@@ -212,7 +212,7 @@ const showCommentFromDB = (itemsData, post_id) => {
   `;
 };
 
-const addComment = async () => {
+const addComment = async (post_id) => {
   const content = document.getElementById("comment-box").value;
   const author_id = PersonalData.student.id;
   const author =
