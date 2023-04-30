@@ -12,7 +12,7 @@ let addkratoo =
 <textarea id="content" placeholder="Content" rows="4" cols="50"></textarea><br><button id="submit" onclick="addKratoo(PersonalData)">Submit</button></div>';
 
 function updateMain() {
-  let main = "";
+  main = "";
   let i = 0;
   for (t of topics) {
     if (i % 2 == 1) {
@@ -30,15 +30,21 @@ function updateMain() {
 }
 
 function toTopic(n) {
-  var content = document.getElementById("kratoo");
-  content.innerHTML = "<div>" + writer[n] + " " + date[n] + "</div>";
-  content.innerHTML +=
-    "<h2>" + topics[n] + "</h2><div>" + contents[n] + "</div>";
-  content.innerHTML +=
-    '<span>Answer this question : <br><br></span><input type="text" id="content"><br>' +
-    '<button id="submit" onclick="addComment()">Submit</button>';
-  getCommentFromDB(post_id);
-  showCommentFromDB(itemsData);
+  main = document.getElementById("kratoo");
+  // content.innerHTML = "<div>" + writer[n] + " " + date[n] + "</div>";
+  // content.innerHTML +=
+  //   "<h2>" + topics[n] + "</h2><div>" + contents[n] + "</div>";
+  main = '<div class="box in-topic-box">';
+  main += '<p class="in-topic">' + topics[n] + "</p>";
+  main += '<p class="in-content">' + contents[n] + "</p>";
+  main += '<span class="in-author">By ' + writer[n] + " " + date[n] + "</span>";
+  main += "</div>";
+  // content.innerHTML +=
+  //   '<span>Answer this question : <br><br></span><input type="text" id="content"><br>' +
+  //   '<button id="submit" onclick="addComment()">Submit</button>';
+  toMainmenu();
+  getCommentFromDB("ad3a30ba-4e85-4f25-9d63-7de170c8f00a");
+  // showCommentFromDB(itemsData);
 }
 
 function toMainmenu() {
@@ -81,7 +87,7 @@ const getKratooFromDB = async () => {
       // console.log(data.sort(customSort));
     })
     .catch((error) => console.error(error));
-  console.log(itemsData);
+  // console.log(itemsData);
   showKratooInTable(itemsData);
 };
 
@@ -96,7 +102,7 @@ const getMyKratooFromDB = async (student_id) => {
       itemsData = data.sort(customSort);
     })
     .catch((error) => console.error(error));
-  console.log(itemsData);
+  // console.log(itemsData);
   showKratooInTable(itemsData);
 };
 
@@ -166,28 +172,35 @@ const getCommentFromDB = async (post_id) => {
     .then((response) => response.json())
     .then((data) => {
       itemsData = data.sort(customSort);
+      console.log(itemsData);
+      showCommentFromDB(itemsData, post_id);
     })
     .catch((error) => console.error(error));
 };
 
-const showCommentFromDB = (itemsData) => {
+const showCommentFromDB = (itemsData, post_id) => {
   let comments = [];
-  let commentors = [];
-  for (data of itemsData) {
-    comments.push(data.comment_content);
-    commentors.push(data.comment_author);
+  for (d of itemsData) {
+    let c = [d.comment_author, d.comment_content, d.comment_date];
+    comments.push(c);
   }
   var content = document.getElementById("kratoo");
-  let i = 0;
-  for (c in comments) {
-    content.innerHTML += '<a><li class="comment">';
-    content.innerHTML += "<h3>" + commentors[i] + "</h3>";
-    content.innerHTML += "<div>" + comments[i] + "</div>";
-    content.innerHTML += "</li></a>";
+  let m = "";
+  for (c of comments) {
+    m += '<div class="box comment-box">';
+    m += '<p class="commentor">' + c[0] + "</p>";
+    m += '<p class="comment">' + c[1] + "</p>";
+    m += '<span class="comment-date">' + c[2] + "</span>";
+    m += "</div>";
   }
+  content.innerHTML += m;
+  content.innerHTML +=
+    '<div class="box">' +
+    '<textarea rows="4" cols="50" placeholder="Wanna say something?" type="text" id="comment-box"></textarea><br>' +
+    '<button id="comment-btn" onclick="addComment(post_id)">Submit</button></div>';
 };
 
-const addComment = async (post_id, PersonalData) => {
+const addComment = async (post_id) => {
   const content = document.getElementById("content").value;
   const author_id = PersonalData.student.id;
   const author =
@@ -260,8 +273,8 @@ function putUserProfile(data) {
 }
 
 const customSort = (a, b) => {
-  // console.log(a.post_title);
-  // console.log(b.post_title);
+  // console.log(a.comment_author);
+  // console.log(b.comment_author);
   // console.log(a.second - b.second);
   return parseInt(b.second) - parseInt(a.second);
 };
