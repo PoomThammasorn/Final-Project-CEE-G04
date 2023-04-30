@@ -17,9 +17,9 @@ function updateMain() {
   let i = 0;
   for (t of topics) {
     if (i % 2 == 1) {
-      main += '<div class="containers darker" onclick="toTopic(' + i + ')">';
+      main += `<div class="containers darker" id="${post_id_list[i]}" onclick="toTopic(${i})">`;
     } else {
-      main += '<div class="containers" onclick="toTopic(' + i + ')">';
+      main += `<div class="containers" id="${post_id_list[i]}" onclick="toTopic(${i})">`;
     }
     main += '<p class="topic">' + topics[i] + "</p>";
     main += '<span class="author">By ' + writer[i] + "</span>";
@@ -102,7 +102,6 @@ const getMyKratooFromDB = async (student_id) => {
       itemsData = data.sort(customSort);
     })
     .catch((error) => console.error(error));
-  // console.log(itemsData);
   showKratooInTable(itemsData);
 };
 
@@ -160,6 +159,7 @@ const deleteKratoo = async (post_id) => {
   doc.innerHTML = main;
   await getKratooFromDB();
   showKratooInTable(itemsData);
+  location.reload();
 };
 /* ---------------------------------------------------- comment part -------------------------------------------------- */
 
@@ -181,7 +181,7 @@ const getCommentFromDB = async (post_id) => {
 const showCommentFromDB = (itemsData, post_id) => {
   let comments = [];
   for (d of itemsData) {
-    let c = [d.comment_author, d.comment_content, d.comment_date];
+    let c = [d.comment_author, d.comment_content, d.comment_date, d.comment_id];
     comments.push(c);
   }
   var content = document.getElementById("kratoo");
@@ -202,7 +202,7 @@ const showCommentFromDB = (itemsData, post_id) => {
   `;
   for (c of comments) {
     content.innerHTML += `
-    <div class="box comment-box">
+    <div class="box comment-box" id="${c[3]}">
       <p class="commentor">${c[0]}</p>
       <p class="comment">${c[1]}</p>
       <span class="comment-date">${c[2]}</span>
@@ -234,9 +234,11 @@ const addComment = async (post_id) => {
   await fetch(`http://${backendIPAddress}/post/comments/${post_id}`, options)
     .then((response) => response.json())
     .catch((error) => console.error(error)); /* เอาไว้อัพเดตหน้า comemnt */
+  resetCommentChild();
   getCommentFromDB(post_id);
   // showCommentFromDB(itemsData);
 };
+
 const deleteComment = async (comment_id, post_id) => {
   const options = {
     method: "DELETE",
@@ -248,10 +250,21 @@ const deleteComment = async (comment_id, post_id) => {
   )
     .then((response) => response.json())
     .catch((error) => console.error(error)); /* เอาไว้อัพเดตหน้า comemnt */
+  resetCommentChild();
   getCommentFromDB(post_id);
   // showCommentFromDB(itemsData);
   // getMyKratooFromDB(post_id);
 };
+
+function resetCommentChild() {
+  var parent = document.getElementById("kratoo");
+  firstChild = parent.firstChild;
+  nextChild = firstChild.nextSibling;
+  while (nextChild) {
+    parent.removeChild(nextChild);
+    nextChild = firstChild.nextSibling;
+  }
+}
 /* ---------------------------------------------------- mcv -------------------------------------------------- */
 const getUserProfile = async () => {
   const options = {
