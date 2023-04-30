@@ -69,7 +69,7 @@ const addKratoo = async (PersonalData) => {
   const topic = document.getElementById("topic").value;
   const content = document.getElementById("content").value;
   const author_id = PersonalData.student.id;
-  const author = PersonalData.student.firstname_en.concat(" ", PersonalData.student.lastname_en);
+  const author = PersonalData.student.firstname_en.concat + " " + PersonalData.student.lastname_en;
   const itemToAdd = {
     post_content: content,
     post_author: author,
