@@ -133,6 +133,7 @@ function toMyKratoo() {
 }
 
 function toMainKratoo() {
+  console.log("toMainKratoo");
   getKratooFromDB();
 }
 
