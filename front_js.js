@@ -236,7 +236,7 @@ const addComment = async (post_id) => {
     .then((response) => response.json())
     .catch((error) => console.error(error)); /* เอาไว้อัพเดตหน้า comemnt */
   await getCommentFromDB(post_id);
-  showCommentFromDB(itemsData);
+  // showCommentFromDB(itemsData);
 };
 const deleteComment = async (comment_id, post_id) => {
   const options = {
