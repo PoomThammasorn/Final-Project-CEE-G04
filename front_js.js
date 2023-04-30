@@ -132,6 +132,10 @@ function toMyKratoo() {
   getMyKratooFromDB(PersonalData.student.id);
 }
 
+function toMainKratoo() {
+  getKratooFromDB();
+}
+
 const deleteKratoo = async (post_id) => {
   const options = {
     method: "DELETE",
