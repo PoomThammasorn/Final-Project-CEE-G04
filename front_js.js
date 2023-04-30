@@ -6,7 +6,7 @@ let contents = [];
 let main = document.getElementById("kratoo").innerHTML;
 let addkratoo =
   ' <input type="text" placeholder="Topic" id="topic" name="name" id="topic" maxlength="60"/><br>\
-<textarea id="content" placeholder="Content" rows="4" cols="50"></textarea><br><button id="submit" onclick="addKratoo()">Submit</button></div>';
+<textarea id="content" placeholder="Content" rows="4" cols="50"></textarea><br><button id="submit" onclick="addKratoo(PersonalData)">Submit</button></div>';
 function updateMain() {
   let main = "<ul>";
   let i = 0;
@@ -65,7 +65,7 @@ const getKratooFromDB = async () => {
   console.log(itemsData);
   showKratooInTable(itemsData);
 };
-const addKratoo = async () => {
+const addKratoo = async (PersonalData) => {
   const topic = document.getElementById("topic").value;
   const content = document.getElementById("content").value;
   const author_id = PersonalData.student.id;
