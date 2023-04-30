@@ -201,11 +201,11 @@ const showCommentFromDB = (itemsData, post_id) => {
     m += "</div>";
   }
   content.innerHTML += m;
-  content.innerHTML += '<div class="box">';
-  content.innerHTML +=
+  m = '<div class="box">';
+  m +=
     '<textarea rows="4" cols="50" placeholder="Wanna say something?" type="text" id="comment-box"></textarea><br>';
-  content.innerHTML +=
-    '<button id="comment-btn" onclick="addComment(${post_id})>Submit</button></div>';
+  m += '<button id="comment-btn" onclick="addComment()>Submit</button></div>';
+  content.innerHTML += m;
 };
 
 const addComment = async () => {
