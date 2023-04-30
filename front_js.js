@@ -58,8 +58,8 @@ const getKratooFromDB = async () => {
     .then((response) => response.json())
     .then((data) => {
       itemsData = data.sort(customSort);
-      console.log(data);
-      console.log(data.sort(customSort));
+      // console.log(data);
+      // console.log(data.sort(customSort));
     })
     .catch((error) => console.error(error));
   console.log(itemsData);
@@ -131,7 +131,7 @@ const getCommentFromDB = async (post_id) => {
   await fetch(`http://${backendIPAddress}/post/comments/${post_id}`, options)
     .then((response) => response.json())
     .then((data) => {
-      itemsData = data;
+      itemsData = data.sort(customSort);
     })
     .catch((error) => console.error(error));
 };
@@ -205,8 +205,8 @@ function putUserProfile(data) {
 }
 
 const customSort = (a, b) => {
-  console.log(a.post_title);
-  console.log(b.post_title);
-  console.log(a.second - b.second);
-  return parseInt(a.second) - parseInt(b.second);
+  // console.log(a.post_title);
+  // console.log(b.post_title);
+  // console.log(a.second - b.second);
+  return parseInt(b.second) - parseInt(a.second);
 };
