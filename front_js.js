@@ -203,5 +203,5 @@ function putUserProfile(data) {
 }
 
 const customSort = (a, b) => {
-  return parseInt(a.secound) - parseInt(b.secound);
+  return parseInt(a.second) - parseInt(b.second);
 };
