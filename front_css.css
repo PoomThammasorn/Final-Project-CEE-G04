@@ -372,3 +372,9 @@ li {
   width: 70px;
   color: #000000;
 }
+
+.delete-btn:hover {
+  background: #b90606;
+  color: white;
+  border: 2px solid #b90606;
+}

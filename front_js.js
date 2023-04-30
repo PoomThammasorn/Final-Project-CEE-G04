@@ -181,7 +181,13 @@ const getCommentFromDB = async (post_id) => {
 const showCommentFromDB = (itemsData, post_id) => {
   let comments = [];
   for (d of itemsData) {
-    let c = [d.comment_author, d.comment_content, d.comment_date, d.comment_id];
+    let c = [
+      d.comment_author,
+      d.comment_content,
+      d.comment_date,
+      d.comment_author_id,
+      d.comment_id,
+    ];
     comments.push(c);
   }
   var content = document.getElementById("kratoo");
@@ -206,8 +212,13 @@ const showCommentFromDB = (itemsData, post_id) => {
       <p class="commentor">${c[0]}</p>
       <p class="comment">${c[1]}</p>
       <span class="comment-date">${c[2]}</span>
-    </div>
     `;
+    if (PersonalData.student.id == c[3]) {
+      comment.innerHTML += `
+      <button class="comment-delete-btn" onclick="deleteComment('${c[4]},'${post_id}')">Delete</button>
+      `;
+    }
+    content.innerHTML += `</div>`;
   }
 };
 
