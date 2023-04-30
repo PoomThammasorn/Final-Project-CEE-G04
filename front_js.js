@@ -12,16 +12,20 @@ let addkratoo =
 <textarea id="content" placeholder="Content" rows="4" cols="50"></textarea><br><button id="submit" onclick="addKratoo(PersonalData)">Submit</button></div>';
 
 function updateMain() {
-  let main = "<ul>";
+  let main = "";
   let i = 0;
   for (t of topics) {
-    main += '<a href="#" onclick="toTopic(' + i + ')">';
-    main += '<li class="topic">';
-    main += "<h2>" + topics[i] + "</h2>";
-    main += "</li></a>";
+    if (i % 2 == 1) {
+      main += '<div class="containers darker" onclick="toTopic(' + i + ')">';
+    } else {
+      main += '<div class="containers" onclick="toTopic(' + i + ')">';
+    }
+    main += '<p class="topic">' + topics[i] + "</p>";
+    main += '<span class="author">By ' + writer[i] + "</span>";
+    main += '<span class="author">' + date[i] + "</span>";
+    main += "</div>";
     i += 1;
   }
-  main += "</ul>";
   return main;
 }
 
