@@ -41,9 +41,11 @@ function toTopic(n) {
   console.log(writer_id[n]);
   if (PersonalData.student.id == writer_id[n]) {
     main +=
-      '<button class="delete-btn" onclick="deleteKratoo("' +
+      '<button class="delete-btn" onclick="' +
+      "deleteKratoo('" +
       post_id_list[n] +
-      '")">Delete</button>';
+      "'" +
+      ')">Delete</button>';
   }
   // main += '<span id="id-to-add">' + post_id_list[n] + "</span>";
   main += "</div>";
@@ -196,14 +198,13 @@ const showCommentFromDB = (itemsData, post_id) => {
     m += '<p class="commentor">' + c[0] + "</p>";
     m += '<p class="comment">' + c[1] + "</p>";
     m += '<span class="comment-date">' + c[2] + "</span>";
-    m += '<span id="id-to-add">' + post_id_list[n] + "</span>";
     m += "</div>";
   }
   content.innerHTML += m;
   content.innerHTML +=
     '<div class="box">' +
     '<textarea rows="4" cols="50" placeholder="Wanna say something?" type="text" id="comment-box"></textarea><br>' +
-    '<button id="comment-btn" onclick="addComment()">Submit</button></div>';
+    '<button id="comment-btn" onclick="addComment(${post_id})>Submit</button></div>';
 };
 
 const addComment = async () => {
