@@ -69,7 +69,7 @@ const addKratoo = async (PersonalData) => {
   const topic = document.getElementById("topic").value;
   const content = document.getElementById("content").value;
   const author_id = PersonalData.student.id;
-  const author = PersonalData.student.firstname_en.concat + " " + PersonalData.student.lastname_en;
+  const author = PersonalData.student.firstname_en + " " + PersonalData.student.lastname_en;
   const itemToAdd = {
     post_content: content,
     post_author: author,
@@ -139,7 +139,7 @@ const getCommentFromDB = async (post_id) => {
 const addComment = async (post_id, PersonalData) => {
   const content = document.getElementById("content").value;
   const author_id = PersonalData.student.id;
-  const author = PersonalData.student.firstname_en.concat + " " + PersonalData.student.lastname_en;
+  const author = PersonalData.student.firstname_en.+ " " + PersonalData.student.lastname_en;
   const itemToAdd = {
     comment_author: "from mcv",
     comment_author_id: "from mcv",
