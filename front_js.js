@@ -207,15 +207,13 @@ const showCommentFromDB = (itemsData, post_id) => {
   </div>
   `;
   for (c of comments) {
-    content.innerHTML += `
-    <div class="box comment-box" id="${c[3]}">
-      <p class="commentor">${c[0]}</p>
-      <p class="comment">${c[1]}</p>
-      <span class="comment-date">${c[2]}</span>
-    `;
+    content.innerHTML += `<div class="box comment-box" id="${c[3]}">`;
+    content.innerHTML += `<p class="commentor">${c[0]}</p>`;
+    content.innerHTML += `<p class="comment">${c[1]}</p>`;
+    content.innerHTML += `<span class="comment-date">${c[2]}</span>`;
     if (PersonalData.student.id == c[3]) {
       content.innerHTML += `
-      <button class="delete-btn" onclick="deleteComment('${c[4]},'${post_id}')">Delete</button>
+      <button class="delete-btn" onclick="deleteComment('${c[4]}','${post_id}')">Delete</button>
       `;
     }
     content.innerHTML += `</div>`;
