@@ -9,14 +9,20 @@ const getUserProfile = async () => {
     options
   )
     .then((response) => response.json())
+    .then((data) => data.data)
     .then((data) => {
-      console.log(data.user);
+      console.log(data);
       document.getElementById(
-        "text_info"
-      ).innerHTML = `Thammasorn Thammasarangkoon`; //`${data.user.title_en} ${data.user.firstname_en} ${data.user.lastname_en}`;
+        "eng-name-info"
+      ).innerHTML = `${data.student.title_en} ${data.student.firstname_en} ${data.student.lastname_en}`;
       document.getElementById(
         "thai-name-info"
-      ).innerHTML = `ธรรมสรณ์ ธรรมสรางกูร`; //`${data.user.title_th} ${data.user.firstname_th} ${data.user.lastname_th}`;
+      ).innerHTML = `${data.student.title_th} ${data.student.firstname_th} ${data.student.lastname_th}`;
+      document.getElementById("student-id").innerHTML = `${data.student.id}`;
     })
     .catch((error) => console.error(error));
+};
+
+const logout = async () => {
+  window.location.href = `http://${backendIPAddress}/courseville/logout`;
 };

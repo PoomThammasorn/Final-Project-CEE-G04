@@ -1,14 +1,14 @@
 const backendIPAddress = "52.20.54.127:3000";
-
 let itemsData;
+let PersonalData;
 let topics = [];
 let contents = [];
 let writer = [];
 let date = [];
 let main = document.getElementById("kratoo").innerHTML;
 let addkratoo =
-  '<span>Topic :</span><input type="text" id="topic"><br><span>Question :</span>\
-<textarea id="content" rows="4" cols="50"></textarea><br><button id="submit" onclick="addKratoo()">Submit</button></div>';
+  ' <input type="text" placeholder="Topic" id="topic" name="name" id="topic" maxlength="60"/><br>\
+<textarea id="content" placeholder="Content" rows="4" cols="50"></textarea><br><button id="submit" onclick="addKratoo(PersonalData)">Submit</button></div>';
 function updateMain() {
   let main = "<ul>";
   let i = 0;
@@ -44,8 +44,13 @@ const showKratooInTable = (itemsData) => {
     เข้าใจว่าถ้า ใช้อันนี้ตอน refresh กับตอน submit แล้วกลับมาหน้าแรก ข้อมูลจะไม่หาย*/
   topics = [];
   contents = [];
+<<<<<<< HEAD
   writer = [];
   date = [];
+||||||| 3d890a9
+=======
+  // getKratooFromDB();
+>>>>>>> d9f8a8f23831f048586610b0c0932b1cc7b70d59
   for (data of itemsData) {
     topics.push(data.post_title);
     contents.push(data.post_content);
@@ -55,9 +60,6 @@ const showKratooInTable = (itemsData) => {
   main = updateMain();
   toMainmenu();
 };
-const showItemsFromDB = (itemsData) => {
-  //ทำไงอ่ะ
-};
 const getKratooFromDB = async () => {
   const options = {
     method: "GET",
@@ -66,16 +68,19 @@ const getKratooFromDB = async () => {
   await fetch(`http://${backendIPAddress}/post`, options)
     .then((response) => response.json())
     .then((data) => {
-      itemsData = data;
+      itemsData = data.sort(customSort);
+      // console.log(data);
+      // console.log(data.sort(customSort));
     })
     .catch((error) => console.error(error));
+  console.log(itemsData);
   showKratooInTable(itemsData);
 };
-const addKratoo = async () => {
+const addKratoo = async (PersonalData) => {
   const topic = document.getElementById("topic").value;
   const content = document.getElementById("content").value;
-  const author_id = "from mcv";
-  const author = "from mcv";
+  const author_id = PersonalData.student.id;
+  const author = PersonalData.student.firstname_en + " " + PersonalData.student.lastname_en;
   const itemToAdd = {
     post_content: content,
     post_author: author,
@@ -97,6 +102,9 @@ const addKratoo = async () => {
     .catch((error) => console.error(error));
   let doc = document.getElementById("kratoo");
   doc.innerHTML = main;
+
+  await getKratooFromDB();
+  showKratooInTable(itemsData);
 };
 // function toMyKratoo() { ต้องแก้ให้เรียกจาก author/author id (มั้ง)
 //   let myList = "<ul>";
@@ -121,8 +129,8 @@ const deleteKratoo = async (post_id) => {
     .catch((error) => console.error(error)); /* เอาไว้อัพเดตหน้า main */
   let doc = document.getElementById("kratoo");
   doc.innerHTML = main;
-  /*await getKratooFromDB();
-   showItemsFromDB(itemsData);*/
+  await getKratooFromDB();
+  showItemsFromDB(itemsData);
 };
 /* ---------------------------------------------------- comment part -------------------------------------------------- */
 
@@ -134,15 +142,15 @@ const getCommentFromDB = async (post_id) => {
   await fetch(`http://${backendIPAddress}/post/comments/${post_id}`, options)
     .then((response) => response.json())
     .then((data) => {
-      itemsData = data;
+      itemsData = data.sort(customSort);
     })
     .catch((error) => console.error(error));
 };
 
-const addComment = async (post_id) => {
+const addComment = async (post_id, PersonalData) => {
   const content = document.getElementById("content").value;
-  // const author_id = "from mcv";
-  // const author = "from mcv";
+  const author_id = PersonalData.student.id;
+  const author = PersonalData.student.firstname_en + " " + PersonalData.student.lastname_en;
   const itemToAdd = {
     comment_author: "from mcv",
     comment_author_id: "from mcv",
@@ -179,11 +187,6 @@ const deleteCoemment = async (comment_id, post_id) => {
     showItemsFromDB(itemsData);*/
 };
 /* ---------------------------------------------------- mcv -------------------------------------------------- */
-// const authorizeApplication = () => {
-//   window.location.href = `http://${backendIPAddress}/courseville/auth_app`;
-//   //   console.log("authorizeApplication");
-// };
-
 const getUserProfile = async () => {
   const options = {
     method: "GET",
@@ -195,13 +198,26 @@ const getUserProfile = async () => {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data.user);
-      document.getElementById(
-        "eng-name-info"
-      ).innerHTML = `${data.user.title_en} ${data.user.firstname_en} ${data.user.lastname_en}`;
-      document.getElementById(
-        "thai-name-info"
-      ).innerHTML = `${data.user.title_th} ${data.user.firstname_th} ${data.user.lastname_th}`;
+      PersonalData = data.data;
+      putUserProfile(PersonalData);
     })
     .catch((error) => console.error(error));
+};
+
+function putUserProfile(data) {
+  console.log("update profile");
+  document.getElementById(
+    "eng-first-name"
+  ).innerHTML = `${data.student.firstname_en}`;
+  document.getElementById(
+    "eng-last-name"
+  ).innerHTML = `${data.student.lastname_en}`;
+  document.getElementById("student-id").innerHTML = `${data.student.id}`;
+}
+
+const customSort = (a, b) => {
+  // console.log(a.post_title);
+  // console.log(b.post_title);
+  // console.log(a.second - b.second);
+  return parseInt(b.second) - parseInt(a.second);
 };

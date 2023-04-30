@@ -6,24 +6,31 @@
     <title>MyCourseBoard</title>
     <link href="front_css.css" rel="stylesheet" type="text/css" />
   </head>
-  <body onload="getKratooFromDB()">
+
+  <body onload="getKratooFromDB();getUserProfile();">
     <div class="header">
       <a href="#">
         <h1>MyCourseBoard</h1>
       </a>
-      <p>Better MCV</p>
+      <p id="better">Better</p>
+      <img class="img" src="img/mcv_white.png" alt="mcv_logo" />
     </div>
     <div class="container">
       <div class="sidebar">
         <div class="compose" onclick="toAddKratooPage()">สร้างกระทู้</div>
         <div><a href="#" onclick="toMainmenu()">กระทู้ทั้งหมด</a></div>
         <div><a href="#" onclick="toMyKratoo()">ส่งแล้ว</a></div>
+        <div>
+          <span id="eng-first-name"></span>
+          <span id="eng-last-name"></span>
+          <span id="student-id"></span>
+        </div>
       </div>
       <div id="kratoo">
-        <ul>
-        </ul>
+        <ul></ul>
       </div>
     </div>
+
     <script src="front_js.js"></script>
   </body>
 </html>
