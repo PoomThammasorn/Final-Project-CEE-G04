@@ -249,6 +249,8 @@ function putUserProfile(data) {
     "eng-last-name"
   ).innerHTML = `${data.student.lastname_en}`;
   document.getElementById("student-id").innerHTML = `${data.student.id}`;
+  var img = document.getElementById("profile");
+  img.src = `${data.account.profile_pict}`;
 }
 
 const customSort = (a, b) => {
