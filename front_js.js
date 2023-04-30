@@ -160,7 +160,7 @@ const deleteKratoo = async (post_id) => {
   let doc = document.getElementById("kratoo");
   doc.innerHTML = main;
   await getKratooFromDB();
-  showItemsFromDB(itemsData);
+  showKratooInTable(itemsData);
 };
 /* ---------------------------------------------------- comment part -------------------------------------------------- */
 
@@ -197,8 +197,17 @@ const showCommentFromDB = (itemsData, post_id) => {
   }
   content.innerHTML += `
   <div class="box">
-      <textarea rows="4" cols="50" placeholder="Wanna say something?"type="text" id="comment-box"></textarea><br>
-      <button id="comment-btn" onclick="addComment('${post_id}')>Submit</button>
+    <textarea
+      row="4"
+      cols="50"
+      placeholder="Wanna say something?"
+      type="text"
+      id="comment-box"
+    ></textarea
+    ><br />
+    <button id="comment-btn" onclick="addComment('${post_id}')">
+      Submit
+    </button>
   </div>
   `;
 };
