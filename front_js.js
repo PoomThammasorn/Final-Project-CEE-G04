@@ -24,7 +24,7 @@ function updateMain() {
   return main;
 }
 
-const toTopic = async (n) => {
+function toTopic(n) {
   var content = document.getElementById("kratoo");
   content.innerHTML = "<div>" + writer[n] + " " + date[n] + "</div>";
   content.innerHTML +=
@@ -32,8 +32,8 @@ const toTopic = async (n) => {
   content.innerHTML +=
     '<span>Answer this question : <br><br></span><input type="text" id="content"><br>' +
     '<button id="submit" onclick="addComment()">Submit</button>';
-  await getCommentFromDB();
-  showCommentFromDB();
+  getCommentFromDB(post_id);
+  showCommentFromDB(itemsData);
 };
 
 function toMainmenu() {
