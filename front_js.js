@@ -171,7 +171,7 @@ const getCommentFromDB = async (post_id) => {
   await fetch(`http://${backendIPAddress}/post/comments/${post_id}`, options)
     .then((response) => response.json())
     .then((data) => {
-      itemsData = data.sort(customSort);
+      itemsData = data.sort(customSort).reverse();
       console.log(itemsData);
       showCommentFromDB(itemsData, post_id);
     })
@@ -185,15 +185,6 @@ const showCommentFromDB = (itemsData, post_id) => {
     comments.push(c);
   }
   var content = document.getElementById("kratoo");
-  for (c of comments) {
-    content.innerHTML += `
-    <div class="box comment-box">
-      <p class="commentor">${c[0]}</p>
-      <p class="comment">${c[1]}</p>
-      <span class="comment-date">${c[2]}</span>
-    </div>
-    `;
-  }
   content.innerHTML += `
   <div class="box">
     <textarea
@@ -209,6 +200,15 @@ const showCommentFromDB = (itemsData, post_id) => {
     </button>
   </div>
   `;
+  for (c of comments) {
+    content.innerHTML += `
+    <div class="box comment-box">
+      <p class="commentor">${c[0]}</p>
+      <p class="comment">${c[1]}</p>
+      <span class="comment-date">${c[2]}</span>
+    </div>
+    `;
+  }
 };
 
 const addComment = async (post_id) => {
@@ -248,9 +248,9 @@ const deleteComment = async (comment_id, post_id) => {
   )
     .then((response) => response.json())
     .catch((error) => console.error(error)); /* เอาไว้อัพเดตหน้า comemnt */
-  // getCommentFromDB(post_id);
+  getCommentFromDB(post_id);
   // showCommentFromDB(itemsData);
-  getMyKratooFromDB(post_id);
+  // getMyKratooFromDB(post_id);
 };
 /* ---------------------------------------------------- mcv -------------------------------------------------- */
 const getUserProfile = async () => {
