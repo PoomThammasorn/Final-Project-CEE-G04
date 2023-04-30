@@ -41,9 +41,9 @@ function toTopic(n) {
   console.log(writer_id[n]);
   if (PersonalData.student.id == writer_id[n]) {
     main +=
-      '<button class="delete-btn" onclick="deleteKratoo(' +
+      '<button class="delete-btn" onclick="deleteKratoo("' +
       post_id_list[n] +
-      ')">Delete</button>';
+      '")">Delete</button>';
   }
   // main += '<span id="id-to-add">' + post_id_list[n] + "</span>";
   main += "</div>";
@@ -207,7 +207,7 @@ const showCommentFromDB = (itemsData, post_id) => {
 };
 
 const addComment = async () => {
-  const content = document.getElementById("content").value;
+  const content = document.getElementById("comment-box").value;
   const author_id = PersonalData.student.id;
   const author =
     PersonalData.student.firstname_en + " " + PersonalData.student.lastname_en;
