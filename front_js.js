@@ -251,7 +251,7 @@ function putUserProfile(data) {
   ).innerHTML = `${data.student.lastname_en}`;
   document.getElementById("student-id").innerHTML = `${data.student.id}`;
   var image = document.getElementById("profile");
-  Console.log(data.account.profile_pict);
+  console.log(data.account.profile_pict);
   image.src = `${data.account.profile_pict}`;
 }
 
