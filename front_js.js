@@ -203,5 +203,8 @@ function putUserProfile(data) {
 }
 
 const customSort = (a, b) => {
+  console.log(a.post_title);
+  console.log(b.post_title);
+  console.log(a.second - b.second);
   return parseInt(a.second) - parseInt(b.second);
 };
