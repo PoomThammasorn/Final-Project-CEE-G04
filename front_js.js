@@ -4,6 +4,7 @@ let PersonalData;
 let topics = [];
 let contents = [];
 let writer = [];
+let writer_ID = [];
 let date = [];
 let main = document.getElementById("kratoo").innerHTML;
 let addkratoo =
@@ -24,7 +25,7 @@ function updateMain() {
 }
 function toTopic(n) {
   var content = document.getElementById("kratoo");
-  content.innerHTML = "<div>" + writer[n] + " " + date[n] + "</div>";
+  content.innerHTML = "<div>" + writer[n] + ":"+writer_ID[n]+" " + date[n] + "</div>";
   content.innerHTML +=
     "<h2>" + topics[n] + "</h2><div>" + contents[n] + "</div>";
   content.innerHTML +=
@@ -46,11 +47,13 @@ const showKratooInTable = (itemsData) => {
   contents = [];
   writer = [];
   date = [];
+  writer_ID=[];
   for (data of itemsData) {
     topics.push(data.post_title);
     contents.push(data.post_content);
     writer.push(data.post_author);
     date.push(data.post_date);
+    writer_ID.push(data.post_author_id);
   }
   main = updateMain();
   toMainmenu();
@@ -68,7 +71,6 @@ const getKratooFromDB = async () => {
       // console.log(data.sort(customSort));
     })
     .catch((error) => console.error(error));
-  console.log(itemsData);
   showKratooInTable(itemsData);
 };
 const addKratoo = async (PersonalData) => {
