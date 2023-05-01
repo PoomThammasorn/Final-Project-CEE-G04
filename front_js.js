@@ -312,3 +312,7 @@ const customSort = (a, b) => {
   // console.log(a.second - b.second);
   return parseInt(b.second) - parseInt(a.second);
 };
+
+const logout = async () => {
+  window.location.href = `http://${backendIPAddress}/courseville/logout`;
+};
