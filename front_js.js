@@ -1,6 +1,22 @@
 const backendIPAddress = "52.20.54.127:3000";
 let itemsData;
-let PersonalData;
+let PersonalData = {
+  student: {
+    id: "6432072021",
+    title_th: "",
+    firstname_th: "ธรรมสรณ์",
+    lastname_th: "ธรรมสรางกูร",
+    title_en: "",
+    firstname_en: "Thammasorn",
+    lastname_en: "Thammasarangkoon",
+    degree: "Reg CU Data 20210807",
+  },
+  account: {
+    uid: "678881",
+    profile_pict:
+      "https://www.mycourseville.com/sites/all/modules/courseville/pict/default_platform_portrait.svg",
+  },
+};
 let topics = [];
 let contents = [];
 let writer = [];
@@ -190,8 +206,8 @@ const showCommentFromDB = (itemsData, post_id) => {
     ];
     comments.push(c);
   }
-  var content = document.getElementById("kratoo");
-  content.innerHTML += `
+  main = document.getElementById("kratoo");
+  parent.innerHTML += `
   <div class="box">
     <textarea
       row="4"
@@ -206,18 +222,18 @@ const showCommentFromDB = (itemsData, post_id) => {
     </button>
   </div>
   `;
+  var x = "";
   for (c of comments) {
-    content.innerHTML += `<div class="box comment-box" id="${c[3]}">`;
-    content.innerHTML += `<p class="commentor">${c[0]}</p>`;
-    content.innerHTML += `<p class="comment">${c[1]}</p>`;
-    content.innerHTML += `<span class="comment-date">${c[2]}</span>`;
+    x += `<div class="box comment-box" id="${c[3]}">`;
+    x += `<p class="commentor">${c[0]}</p>`;
+    x += `<p class="comment">${c[1]}</p>`;
+    x += `<span class="comment-date">${c[2]}</span>`;
     if (PersonalData.student.id == c[3]) {
-      content.innerHTML += `
-      <button class="delete-btn" onclick="deleteComment('${c[4]}','${post_id}')">Delete</button>
-      `;
+      x += `<button class="delete-btn" onclick="deleteComment('${c[4]}','${post_id}')">Delete</button>`;
     }
-    content.innerHTML += `</div>`;
+    x += `</div>`;
   }
+  main.innerHTML += x;
 };
 
 const addComment = async (post_id) => {
