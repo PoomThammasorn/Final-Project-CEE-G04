@@ -1,22 +1,6 @@
 const backendIPAddress = "52.20.54.127:3000";
 let itemsData;
-let PersonalData = {
-  student: {
-    id: "6432072021",
-    title_th: "",
-    firstname_th: "ธรรมสรณ์",
-    lastname_th: "ธรรมสรางกูร",
-    title_en: "",
-    firstname_en: "Thammasorn",
-    lastname_en: "Thammasarangkoon",
-    degree: "Reg CU Data 20210807",
-  },
-  account: {
-    uid: "678881",
-    profile_pict:
-      "https://www.mycourseville.com/sites/all/modules/courseville/pict/default_platform_portrait.svg",
-  },
-};
+let PersonalData;
 let topics = [];
 let contents = [];
 let writer = [];
