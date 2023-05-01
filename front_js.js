@@ -156,7 +156,7 @@ const deleteKratoo = async (post_id) => {
   await fetch(`http://${backendIPAddress}/post/${post_id}`, options)
     .then((response) => response.json())
     .catch((error) => console.error(error)); /* เอาไว้อัพเดตหน้า main */
-  await deleteAllCommentByPostID(post_id);
+  deleteAllCommentByPostID(post_id);
   let doc = document.getElementById("kratoo");
   doc.innerHTML = main;
   await getKratooFromDB();
