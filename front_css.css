@@ -7,11 +7,10 @@ body {
   width: 100%;
 }
 
-h1 {
-  font-family: "Mitr", sans-serif;
-  font-size: 45px;
-  font-weight: bold;
-  color: #fff;
+.mcb_pic {
+  padding-top: 25px;
+  width: 450px;
+  cursor: pointer;
 }
 
 .sidebar {
@@ -67,7 +66,7 @@ div {
   font-weight: bolder;
   border-radius: 12%;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .compose:hover {
@@ -160,7 +159,7 @@ li {
 #submit {
   background-color: #022447;
   position: center;
-  cursor: pointer;
+  /* cursor: pointer; */
   font-size: 16px;
   color: #fff;
   border: none;
@@ -242,15 +241,13 @@ li {
   background-color: #ddd;
 }
 
-/* .containers::after {
-  content: "";
-  clear: both;
-  display: table;
-} */
+a {
+  cursor: default;
+}
 
 .containers:hover {
   background-color: #0d99f0;
-  cursor: pointer;
+  /* cursor: pointer; */
   color: #ffffff;
 }
 
@@ -259,8 +256,17 @@ li {
   float: right;
   color: #000000;
   font-family: "Josefin Sans", sans-serif;
+  font-weight: normal;
+  font-size: 13px;
+}
+
+.author_date {
+  text-decoration: none;
+  float: right;
+  color: #000000;
+  font-family: "Josefin Sans", sans-serif;
   font-weight: lighter;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .in-topic-box {
@@ -320,12 +326,6 @@ li {
   padding-top: 2px;
 }
 
-/* .box::after {
-  content: "";
-  clear: both;
-  display: table;
-} */
-
 .comment-date {
   text-decoration: none;
   float: right;
@@ -355,7 +355,7 @@ li {
 #comment-btn:hover {
   background-color: #0d99f0;
   color: #ffffff;
-  cursor: pointer;
+  /* cursor: pointer; */
   border: 2px solid #0d99f0;
 }
 
@@ -365,7 +365,7 @@ li {
   padding: 5px 5px;
   border: 2px solid #aaa;
   background: white;
-  cursor: pointer;
+  /* cursor: pointer; */
   font-family: "Mitr", sans-serif;
   font-size: 1em;
   text-align: center;
@@ -385,7 +385,7 @@ li {
   border-radius: 8px;
   padding: 5px 5px;
   background: white;
-  cursor: pointer;
+  /* cursor: pointer; */
   font-family: "Mitr", sans-serif;
   font-size: 1em;
   text-align: center;

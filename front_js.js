@@ -22,8 +22,8 @@ function updateMain() {
       main += `<div class="containers" id="${post_id_list[i]}" onclick="toTopic(${i})">`;
     }
     main += '<p class="topic">' + topics[i] + "</p>";
-    main += '<span class="author">By ' + writer[i] + "</span>";
-    main += '<span class="author">' + date[i] + "</span>";
+    main += `<span class="author">${writer_id[i]} ${writer[i]}</span>`;
+    main += '<span class="author_date">' + date[i] + "</span>";
     main += "</div>";
     i += 1;
   }
@@ -35,7 +35,7 @@ function toTopic(n) {
   main = '<div class="box in-topic-box ' + post_id_list[n] + '">';
   main += '<p class="in-topic">' + topics[n] + "</p>";
   main += '<p class="in-content">' + contents[n] + "</p>";
-  main += '<span class="in-author">By ' + writer[n] + " " + date[n] + "</span>";
+  main += `<span class="in-author">${writer_id[n]} ${writer[n]} ${date[n]}</span>`;
   if (PersonalData.student.id == writer_id[n]) {
     main += `
       <button class="delete-btn" onclick="deleteKratoo('${post_id_list[n]}')">Delete</button>
@@ -208,8 +208,8 @@ const showCommentFromDB = (itemsData, post_id) => {
   `;
   var x = "";
   for (c of comments) {
-    x += `<div class="box comment-box" id="${c[3]}">`;
-    x += `<p class="commentor">${c[0]}</p>`;
+    x += `<div class="box comment-box" id="${c[4]}">`;
+    x += `<p class="commentor">${c[3]} ${c[0]}</p>`;
     x += `<p class="comment">${c[1]}</p>`;
     x += `<span class="comment-date">${c[2]}</span>`;
     if (PersonalData.student.id == c[3]) {
