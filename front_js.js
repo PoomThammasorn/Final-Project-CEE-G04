@@ -191,7 +191,7 @@ const showCommentFromDB = (itemsData, post_id) => {
     comments.push(c);
   }
   main = document.getElementById("kratoo");
-  parent.innerHTML += `
+  main.innerHTML += `
   <div class="box">
     <textarea
       row="4"
