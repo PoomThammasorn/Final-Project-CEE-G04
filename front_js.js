@@ -26,6 +26,7 @@ function updateMain() {
     main += '<span class="author_date">' + date[i] + "</span>";
     main += "</div>";
     i += 1;
+    //updateMain
   }
   return main;
 }
