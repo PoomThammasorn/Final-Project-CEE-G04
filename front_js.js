@@ -156,12 +156,12 @@ const deleteKratoo = async (post_id) => {
   await fetch(`http://${backendIPAddress}/post/${post_id}`, options)
     .then((response) => response.json())
     .catch((error) => console.error(error)); /* เอาไว้อัพเดตหน้า main */
-  deleteAllCommentByPostID(post_id);
   let doc = document.getElementById("kratoo");
   doc.innerHTML = main;
   await getKratooFromDB();
   showKratooInTable(itemsData);
   location.reload();
+  deleteAllCommentByPostID(post_id);
 };
 /* ---------------------------------------------------- comment part -------------------------------------------------- */
 
@@ -191,7 +191,7 @@ const deleteAllCommentByPostID = async (post_id) => {
       itemsData = data.sort(customSort).reverse();
       console.log(itemsData);
       for (d of itemsData) {
-        deleteComment(d.comment_id, post_id);
+        justDeleteComment(d.comment_id, post_id);
       }
     })
     .catch((error) => console.error(error));
@@ -282,6 +282,19 @@ const deleteComment = async (comment_id, post_id) => {
   getCommentFromDB(post_id);
   // showCommentFromDB(itemsData);
   // getMyKratooFromDB(post_id);
+};
+
+const justDeleteComment = async (comment_id, post_id) => {
+  const options = {
+    method: "DELETE",
+    credentials: "include",
+  };
+  await fetch(
+    `http://${backendIPAddress}/post/comments/${post_id}/${comment_id}`,
+    options
+  )
+    .then((response) => response.json())
+    .catch((error) => console.error(error)); /* เอาไว้อัพเดตหน้า comemnt */
 };
 
 function resetCommentChild() {
