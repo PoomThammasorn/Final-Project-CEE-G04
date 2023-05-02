@@ -9,7 +9,7 @@ let date = [];
 let post_id_list = [];
 let main = document.getElementById("kratoo").innerHTML;
 let addkratoo =
-  ' <input type="text" placeholder="Topic" id="topic" name="name" id="topic" maxlength="60"/><br>\
+  ' <input type="text" placeholder="Topic" id="topic" name="name" id="topic" maxlength="200"/><br>\
 <textarea id="content" placeholder="Content" rows="4" cols="50"></textarea><br><button id="submit" onclick="addKratoo(PersonalData)">Submit</button></div>';
 
 function updateMain() {
@@ -90,7 +90,6 @@ const getKratooFromDB = async () => {
     })
     .catch((error) => console.error(error));
   showKratooInTable(itemsData);
-  // location.reload();
 };
 
 const getMyKratooFromDB = async (student_id) => {
@@ -137,6 +136,7 @@ const addKratoo = async (PersonalData) => {
 
   await getKratooFromDB();
   showKratooInTable(itemsData);
+  location.reload();
 };
 
 function toMyKratoo() {
@@ -144,6 +144,7 @@ function toMyKratoo() {
 }
 
 function toMainKratoo() {
+  console.log("toMainKratoo");
   getKratooFromDB();
 }
 
@@ -159,7 +160,7 @@ const deleteKratoo = async (post_id) => {
   // doc.innerHTML = main;
   await getKratooFromDB();
   showKratooInTable(itemsData);
-  // location.reload();
+  location.reload();
   deleteAllCommentByPostID(post_id);
 };
 /* ---------------------------------------------------- comment part -------------------------------------------------- */
@@ -173,6 +174,7 @@ const getCommentFromDB = async (post_id) => {
     .then((response) => response.json())
     .then((data) => {
       itemsData = data.sort(customSort).reverse();
+      console.log(itemsData);
       showCommentFromDB(itemsData, post_id);
     })
     .catch((error) => console.error(error));
@@ -187,6 +189,7 @@ const deleteAllCommentByPostID = async (post_id) => {
     .then((response) => response.json())
     .then((data) => {
       itemsData = data.sort(customSort).reverse();
+      console.log(itemsData);
       for (d of itemsData) {
         justDeleteComment(d.comment_id, post_id);
       }
@@ -322,6 +325,7 @@ const getUserProfile = async () => {
 };
 
 function putUserProfile(data) {
+  console.log("update profile");
   document.getElementById(
     "eng-first-name"
   ).innerHTML = `${data.student.firstname_en}`;
@@ -330,20 +334,17 @@ function putUserProfile(data) {
   ).innerHTML = `${data.student.lastname_en}`;
   document.getElementById("student-id").innerHTML = `${data.student.id}`;
   var image = document.getElementById("profile");
+  console.log(data.account.profile_pict);
   image.src = `${data.account.profile_pict}`;
 }
 
 const customSort = (a, b) => {
+  // console.log(a.comment_author);
+  // console.log(b.comment_author);
+  // console.log(a.second - b.second);
   return parseInt(b.second) - parseInt(a.second);
 };
 
 const logout = async () => {
   window.location.href = `http://${backendIPAddress}/courseville/logout`;
-};
-
-const authorizeApplication = () => {
-  // document.getElementById(
-  //   "btn"
-  // ).innerHTML = `<button class="button_logout buttonIO" onclick="logout()">Logout</button>`;
-  window.location.href = `http://${backendIPAddress}/courseville/auth_app`;
 };
