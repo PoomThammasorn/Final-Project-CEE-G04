@@ -90,7 +90,7 @@ const getKratooFromDB = async () => {
     })
     .catch((error) => console.error(error));
   showKratooInTable(itemsData);
-  location.reload();
+  // location.reload();
 };
 
 const getMyKratooFromDB = async (student_id) => {
@@ -160,7 +160,7 @@ const deleteKratoo = async (post_id) => {
   // doc.innerHTML = main;
   await getKratooFromDB();
   showKratooInTable(itemsData);
-  location.reload();
+  // location.reload();
   deleteAllCommentByPostID(post_id);
 };
 /* ---------------------------------------------------- comment part -------------------------------------------------- */
