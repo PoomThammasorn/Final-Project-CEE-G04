@@ -9,7 +9,7 @@ let date = [];
 let post_id_list = [];
 let main = document.getElementById("kratoo").innerHTML;
 let addkratoo =
-  ' <input type="text" placeholder="Topic" id="topic" name="name" id="topic" maxlength="60"/><br>\
+  ' <input type="text" placeholder="Topic" id="topic" name="name" id="topic" maxlength="200"/><br>\
 <textarea id="content" placeholder="Content" rows="4" cols="50"></textarea><br><button id="submit" onclick="addKratoo(PersonalData)">Submit</button></div>';
 
 function updateMain() {
