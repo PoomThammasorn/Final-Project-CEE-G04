@@ -90,6 +90,7 @@ const getKratooFromDB = async () => {
     })
     .catch((error) => console.error(error));
   showKratooInTable(itemsData);
+  // location.reload();
 };
 
 const getMyKratooFromDB = async (student_id) => {
@@ -136,7 +137,6 @@ const addKratoo = async (PersonalData) => {
 
   await getKratooFromDB();
   showKratooInTable(itemsData);
-  location.reload();
 };
 
 function toMyKratoo() {
@@ -160,7 +160,7 @@ const deleteKratoo = async (post_id) => {
   // doc.innerHTML = main;
   await getKratooFromDB();
   showKratooInTable(itemsData);
-  location.reload();
+  // location.reload();
   deleteAllCommentByPostID(post_id);
 };
 /* ---------------------------------------------------- comment part -------------------------------------------------- */
@@ -347,4 +347,13 @@ const customSort = (a, b) => {
 
 const logout = async () => {
   window.location.href = `http://${backendIPAddress}/courseville/logout`;
+};
+
+const authorizeApplication = () => {
+  window.location.href = `http://${backendIPAddress}/courseville/auth_app`;
+  getKratooFromDB();
+  getUserProfile();
+  document.getElementById(
+    "btn"
+  ).innerHTML = `<button class="button_logout buttonIO" onclick="logout()">Logout</button>`;
 };
