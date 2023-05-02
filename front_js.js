@@ -136,7 +136,6 @@ const addKratoo = async (PersonalData) => {
 
   await getKratooFromDB();
   showKratooInTable(itemsData);
-  location.reload();
 };
 
 function toMyKratoo() {
