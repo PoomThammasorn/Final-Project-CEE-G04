@@ -159,7 +159,6 @@ const deleteKratoo = async (post_id) => {
   // doc.innerHTML = main;
   await getKratooFromDB();
   showKratooInTable(itemsData);
-  location.reload();
   deleteAllCommentByPostID(post_id);
 };
 /* ---------------------------------------------------- comment part -------------------------------------------------- */
