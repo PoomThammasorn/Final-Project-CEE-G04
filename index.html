@@ -13,7 +13,7 @@
     <link href="front_css.css" rel="stylesheet" type="text/css" />
   </head>
 
-  <body onload="getKratooFromDB();getUserProfile();">
+  <body onload="">
     <div class="header">
       <a href="#">
         <img
@@ -39,7 +39,11 @@
           <span id="eng-last-name"></span>
           <span id="student-id"></span>
         </div>
-        <button class="button_logout" onclick="logout()">Logout</button>
+        <div id="btn">
+          <button class="button_login" onclick="authorizeApplication()">
+            Login
+          </button>
+        </div>
       </div>
       <div id="kratoo">
         <ul></ul>

@@ -350,8 +350,10 @@ const logout = async () => {
 };
 
 const authorizeApplication = () => {
-  // document.getElementById(
-  //   "btn"
-  // ).innerHTML = `<button class="button_logout buttonIO" onclick="logout()">Logout</button>`;
   window.location.href = `http://${backendIPAddress}/courseville/auth_app`;
+  getKratooFromDB();
+  getUserProfile();
+  document.getElementById(
+    "btn"
+  ).innerHTML = `<button class="button_logout buttonIO" onclick="logout()">Logout</button>`;
 };
