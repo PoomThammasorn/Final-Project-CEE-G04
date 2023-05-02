@@ -136,6 +136,7 @@ const addKratoo = async (PersonalData) => {
 
   await getKratooFromDB();
   showKratooInTable(itemsData);
+  location.reload();
 };
 
 function toMyKratoo() {
@@ -143,6 +144,7 @@ function toMyKratoo() {
 }
 
 function toMainKratoo() {
+  console.log("toMainKratoo");
   getKratooFromDB();
 }
 
@@ -158,6 +160,7 @@ const deleteKratoo = async (post_id) => {
   // doc.innerHTML = main;
   await getKratooFromDB();
   showKratooInTable(itemsData);
+  location.reload();
   deleteAllCommentByPostID(post_id);
 };
 /* ---------------------------------------------------- comment part -------------------------------------------------- */
@@ -171,6 +174,7 @@ const getCommentFromDB = async (post_id) => {
     .then((response) => response.json())
     .then((data) => {
       itemsData = data.sort(customSort).reverse();
+      console.log(itemsData);
       showCommentFromDB(itemsData, post_id);
     })
     .catch((error) => console.error(error));
@@ -185,6 +189,7 @@ const deleteAllCommentByPostID = async (post_id) => {
     .then((response) => response.json())
     .then((data) => {
       itemsData = data.sort(customSort).reverse();
+      console.log(itemsData);
       for (d of itemsData) {
         justDeleteComment(d.comment_id, post_id);
       }
@@ -320,6 +325,7 @@ const getUserProfile = async () => {
 };
 
 function putUserProfile(data) {
+  console.log("update profile");
   document.getElementById(
     "eng-first-name"
   ).innerHTML = `${data.student.firstname_en}`;
@@ -328,17 +334,17 @@ function putUserProfile(data) {
   ).innerHTML = `${data.student.lastname_en}`;
   document.getElementById("student-id").innerHTML = `${data.student.id}`;
   var image = document.getElementById("profile");
+  console.log(data.account.profile_pict);
   image.src = `${data.account.profile_pict}`;
 }
 
 const customSort = (a, b) => {
+  // console.log(a.comment_author);
+  // console.log(b.comment_author);
+  // console.log(a.second - b.second);
   return parseInt(b.second) - parseInt(a.second);
 };
 
 const logout = async () => {
   window.location.href = `http://${backendIPAddress}/courseville/logout`;
-};
-
-const authorizeApplication = () => {
-  window.location.href = `http://${backendIPAddress}/courseville/auth_app`;
 };
