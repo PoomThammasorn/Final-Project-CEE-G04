@@ -6,7 +6,7 @@ body {
   height: 100vh;
   width: 100%;
 }
-/* hi */
+
 .mcb_pic {
   padding-top: 25px;
   width: 450px;
@@ -66,7 +66,7 @@ div {
   font-weight: bolder;
   border-radius: 12%;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-  /* cursor: pointer; */
+  cursor: pointer;
 }
 
 .compose:hover {
@@ -159,7 +159,7 @@ li {
 #submit {
   background-color: #022447;
   position: center;
-  /* cursor: pointer; */
+  cursor: pointer;
   font-size: 16px;
   color: #fff;
   border: none;
@@ -247,7 +247,7 @@ a {
 
 .containers:hover {
   background-color: #0d99f0;
-  /* cursor: pointer; */
+  cursor: pointer;
   color: #ffffff;
 }
 
@@ -355,7 +355,7 @@ a {
 #comment-btn:hover {
   background-color: #0d99f0;
   color: #ffffff;
-  /* cursor: pointer; */
+  cursor: pointer;
   border: 2px solid #0d99f0;
 }
 
@@ -365,7 +365,7 @@ a {
   padding: 5px 5px;
   border: 2px solid #aaa;
   background: white;
-  /* cursor: pointer; */
+  cursor: pointer;
   font-family: "Mitr", sans-serif;
   font-size: 1em;
   text-align: center;
@@ -385,7 +385,7 @@ a {
   border-radius: 8px;
   padding: 5px 5px;
   background: white;
-  /* cursor: pointer; */
+  cursor: pointer;
   font-family: "Mitr", sans-serif;
   font-size: 1em;
   text-align: center;
