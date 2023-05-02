@@ -144,7 +144,6 @@ function toMyKratoo() {
 }
 
 function toMainKratoo() {
-  console.log("toMainKratoo");
   getKratooFromDB();
 }
 
@@ -174,7 +173,6 @@ const getCommentFromDB = async (post_id) => {
     .then((response) => response.json())
     .then((data) => {
       itemsData = data.sort(customSort).reverse();
-      console.log(itemsData);
       showCommentFromDB(itemsData, post_id);
     })
     .catch((error) => console.error(error));
@@ -189,7 +187,6 @@ const deleteAllCommentByPostID = async (post_id) => {
     .then((response) => response.json())
     .then((data) => {
       itemsData = data.sort(customSort).reverse();
-      console.log(itemsData);
       for (d of itemsData) {
         justDeleteComment(d.comment_id, post_id);
       }
@@ -325,7 +322,6 @@ const getUserProfile = async () => {
 };
 
 function putUserProfile(data) {
-  console.log("update profile");
   document.getElementById(
     "eng-first-name"
   ).innerHTML = `${data.student.firstname_en}`;
@@ -334,14 +330,10 @@ function putUserProfile(data) {
   ).innerHTML = `${data.student.lastname_en}`;
   document.getElementById("student-id").innerHTML = `${data.student.id}`;
   var image = document.getElementById("profile");
-  console.log(data.account.profile_pict);
   image.src = `${data.account.profile_pict}`;
 }
 
 const customSort = (a, b) => {
-  // console.log(a.comment_author);
-  // console.log(b.comment_author);
-  // console.log(a.second - b.second);
   return parseInt(b.second) - parseInt(a.second);
 };
 
@@ -350,10 +342,8 @@ const logout = async () => {
 };
 
 const authorizeApplication = () => {
+  // document.getElementById(
+  //   "btn"
+  // ).innerHTML = `<button class="button_logout buttonIO" onclick="logout()">Logout</button>`;
   window.location.href = `http://${backendIPAddress}/courseville/auth_app`;
-  getKratooFromDB();
-  getUserProfile();
-  document.getElementById(
-    "btn"
-  ).innerHTML = `<button class="button_logout buttonIO" onclick="logout()">Logout</button>`;
 };
