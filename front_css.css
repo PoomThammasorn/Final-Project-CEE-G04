@@ -32,7 +32,10 @@ body {
   height: calc(100vh - 170px);
   margin: 0px;
 }
-
+.header{
+  max-width: 98.85%;
+  /* แปลกๆ555 */
+}
 .header > a {
   color: #fff;
   text-decoration: none;
