@@ -10,10 +10,8 @@ body {
 .mcb_pic {
   padding-top: 25px;
   width: 450px;
+  max-width: 100%;
   cursor: pointer;
-}
-.header{
-  box-sizing: border-box;
 }
 .sidebar {
   background-color: #f2f2f2;
@@ -28,8 +26,14 @@ body {
   position: relative;
 }
 .header{
+  box-sizing: border-box;
   display: flex;
   width: 100%;
+  padding: 0 18px;
+  text-align: left;
+  background: linear-gradient(to right, #018ada, #6dbbe8, #018ada);
+  font-size: 15px;
+  height: 150px;
 }
 .container {
   display: flex;
@@ -79,15 +83,6 @@ div {
   text-decoration: underline;
 }
 
-.header {
-  padding-left: 18px;
-  text-align: left;
-  background: linear-gradient(to right, #018ada, #6dbbe8, #018ada);
-  font-size: 15px;
-  height: 150px;
-  width: 100%;
-}
-
 .img {
   width: 170px;
   position: absolute;
@@ -108,7 +103,7 @@ div {
 #kratoo {
   display: flex;
   flex-direction: column;
-  flex: 1 0 80%;
+  flex: 1 1 80%;
   max-width: 100%;
   margin: 0 10px;
   padding-bottom: 0px;
