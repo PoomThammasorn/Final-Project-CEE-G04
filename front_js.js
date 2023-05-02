@@ -357,7 +357,3 @@ const authorizeApplication = () => {
     "btn"
   ).innerHTML = `<button class="button_logout buttonIO" onclick="logout()">Logout</button>`;
 };
-
-function checkStatus() {
-  if 
-}
