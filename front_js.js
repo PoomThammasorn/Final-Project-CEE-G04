@@ -348,3 +348,7 @@ const customSort = (a, b) => {
 const logout = async () => {
   window.location.href = `http://${backendIPAddress}/courseville/logout`;
 };
+
+const authorizeApplication = () => {
+  window.location.href = `http://${backendIPAddress}/courseville/auth_app`;
+};
